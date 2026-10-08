@@ -6,7 +6,7 @@ Marketing site for **Kikai**, the AI receptionist and CRM in
 Two design directions exist as claude.ai canvases:
 
 - **"Clean Desk"** (canvas "Kikai Website"), the current lead. It's modelled on
-  superpower.com: white and stone, one lime accent, a big media hero with tiles
+  superpower.com: warm off-white with the app's olive, a big photo hero with tiles
   laid over it, numbered steps, a phone-mockup feature switcher, a single
   price card, a facts strip, an FAQ and a sign-up flow. See section 4b.
 - **"Night Desk"** (canvas "Call Assistant Website"), kept for reference. It's
@@ -31,7 +31,7 @@ The proof points all come from what the product already does:
 | Every call ends as one line, with no recording or transcript kept | `receptionist/outcomes.ts`, `call-log.ts` |
 | Phone, WhatsApp, Instagram, Facebook and website chat in one inbox | Conversations (three channel tables) |
 | Staff voice assistant ("what's my afternoon like?"), takings | `/assistant`, `src/lib/takings.ts` |
-| No setup fee, live within 48 hours | The website sales prompt (`prompts/main-site.md`), to be confirmed |
+| Live in a week, keep your number. There **is** a one-off setup fee. | Confirmed by the owner. `prompts/main-site.md` still says "no setup fee" and "48 hours" and needs fixing |
 
 Nothing goes on the site without a source. Stats, testimonials and prices stay
 `[PLACEHOLDER]` until real ones exist.
@@ -77,18 +77,28 @@ Lighthouse a11y ≥ 95.
 Modelled on the *structure and feel* of superpower.com. None of its assets,
 copy or proprietary type are used.
 
-- **Look:** white ground, stone `#f4f4f2` cards, ink `#141414` text and
-  buttons, a single lime `#d4f04a` accent used only as fills (never as text on
-  white). Radii are 12, 20 and 28. All buttons are pills.
+- **Look: the Olive palette, chosen to match the Kikai app.** Warm off-white
+  `#fbfaf6` ground, `#f3f1ea` cards, olive `#3f4a26` buttons, logo and closing
+  section, `#1f2414` text, `#646a58` muted text, blush `#f2dcd2` highlights
+  (the "Booked" chips) and a pale olive tint `#eceee2` for feature panels. Radii
+  are 12, 20 and 28, and all buttons are pills. (Blush, Cobalt, Sage and
+  Vermillion are kept on the canvas for comparison only.)
+- **Photography:** generated images: a hero of a stylist mid-blow-dry with a
+  phone on the counter, plus product shots of the diary on a desktop and the
+  assistant on a phone. The headline sits *above* the hero photo, not over it,
+  so it stays readable. Production needs 2048px+ versions and a portrait crop.
 - **Type:** Geist for everything (light, large, tight headlines at −4.5%), with
   Geist Mono for labels and times. It's the same family as the CRM.
-- **Home, in order:** nav → rounded hero with a looping video and a floating
-  "Kikai answered → Booked" card → three value tiles and an avatar row →
+- **Home, in order:** nav → headline row ("Live in a week · Keep your number")
+  → rounded hero photo with a floating "Kikai answered → Booked" card → three
+  value tiles and an avatar row →
   "Built on" bar (Claude, Deepgram, ElevenLabs, Twilio, WhatsApp Business) →
-  "How Kikai works" in four steps with mini UI → 01–04 feature switcher driving
+  "How Kikai works" in four steps with mini UI → "One diary, on the desk and in
+  your pocket" (the two product shots) → 01–04 feature switcher driving
   a phone mockup → receptionist-vs-Kikai price comparison → five "awkward
-  call" audio cards → review carousel → one price card → facts strip (24/7,
-  48h, 5 channels, 0 recordings) → FAQ accordion → lime closing CTA →
+  call" audio cards → review carousel → one price card (monthly price plus a
+  one-off setup fee) → facts strip (24/7, 1 week to go live, 5 channels,
+  0 recordings) → FAQ accordion → olive closing CTA →
   footer with a newsletter signup.
 - **Sign-up flow** (`/start`): your salon, then your number, then go live. A
   summary card updates live as you pick.
