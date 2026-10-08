@@ -1,8 +1,16 @@
-# Call Assistant website: plan
+# Kikai website: plan
 
-Marketing site for DoAi Call Assistant, the AI receptionist and CRM in
+Marketing site for **Kikai**, the AI receptionist and CRM in
 [`roysterC/call-assistant`](https://github.com/roysterC/call-assistant).
-Design drafts are on the canvas "Call Assistant Website" (claude.ai artifact).
+
+Two design directions exist as claude.ai canvases:
+
+- **"Clean Desk"** (canvas "Kikai Website"), the current lead. It's modelled on
+  superpower.com: white and stone, one lime accent, a big media hero with tiles
+  laid over it, numbered steps, a phone-mockup feature switcher, a single
+  price card, a facts strip, an FAQ and a sign-up flow. See section 4b.
+- **"Night Desk"** (canvas "Call Assistant Website"), kept for reference. It's
+  dark and editorial, with expressive type. See section 4a.
 
 ## 1. Positioning
 
@@ -23,7 +31,7 @@ The proof points all come from what the product already does:
 | Every call ends as one line, with no recording or transcript kept | `receptionist/outcomes.ts`, `call-log.ts` |
 | Phone, WhatsApp, Instagram, Facebook and website chat in one inbox | Conversations (three channel tables) |
 | Staff voice assistant ("what's my afternoon like?"), takings | `/assistant`, `src/lib/takings.ts` |
-| No setup fee, live within 48 hours | DoAi's own sales prompt (`prompts/main-site.md`), to be confirmed |
+| No setup fee, live within 48 hours | The website sales prompt (`prompts/main-site.md`), to be confirmed |
 
 Nothing goes on the site without a source. Stats, testimonials and prices stay
 `[PLACEHOLDER]` until real ones exist.
@@ -33,7 +41,8 @@ Nothing goes on the site without a source. Stats, testimonials and prices stay
 ```
 /                 Home (canvas: "Home — desktop", "Home — phone")
 /hear-it          Interactive call demo, 5 scenarios + talk in browser (canvas: "Hear it")
-/pricing          3 plans + FAQ (canvas: "Pricing")
+/pricing          Single plan + FAQ (Clean Desk puts it on the home page too)
+/start            Sign-up: your salon → your number → go live (canvas: "Get Kikai — step 1")
 /salons           Deeper product tour: diary, callbacks, inbox, assistant, takings
 /about            Who's behind it, UK, data handling
 /blog/[slug]      MDX articles (SEO: "salon missed calls", "AI receptionist UK" …)
@@ -63,7 +72,30 @@ Phase 2: `/vs/[competitor]` comparison pages and `/for/[trade]` vertical pages.
 Budgets: LCP < 2.0s on 4G, CLS < 0.05, JS < 150 KB gz on the home page,
 Lighthouse a11y ≥ 95.
 
-## 4. Design direction: "Night Desk"
+## 4b. Design direction: "Clean Desk" (current)
+
+Modelled on the *structure and feel* of superpower.com. None of its assets,
+copy or proprietary type are used.
+
+- **Look:** white ground, stone `#f4f4f2` cards, ink `#141414` text and
+  buttons, a single lime `#d4f04a` accent used only as fills (never as text on
+  white). Radii are 12, 20 and 28. All buttons are pills.
+- **Type:** Geist for everything (light, large, tight headlines at −4.5%), with
+  Geist Mono for labels and times. It's the same family as the CRM.
+- **Home, in order:** nav → rounded hero with a looping video and a floating
+  "Kikai answered → Booked" card → three value tiles and an avatar row →
+  "Built on" bar (Claude, Deepgram, ElevenLabs, Twilio, WhatsApp Business) →
+  "How Kikai works" in four steps with mini UI → 01–04 feature switcher driving
+  a phone mockup → receptionist-vs-Kikai price comparison → five "awkward
+  call" audio cards → review carousel → one price card → facts strip (24/7,
+  48h, 5 channels, 0 recordings) → FAQ accordion → lime closing CTA →
+  footer with a newsletter signup.
+- **Sign-up flow** (`/start`): your salon, then your number, then go live. A
+  summary card updates live as you pick.
+- **Assets needed:** the hero video (a stylist at work while the phone lights
+  up), recorded audio for the five calls, real reviews and prices.
+
+## 4a. Design direction: "Night Desk" (reference)
 
 - **Mood:** the salon after close, with the phone still lit up. Dark olive-black
   ground, cream type, a single acid-lime accent. It grows out of the CRM's own
@@ -75,7 +107,7 @@ Lighthouse a11y ≥ 95.
   transcript builds, then a lime "Booked" chip lands. It's repeated on `/hear-it`
   with real recorded audio.
 - **Rhythm:** dark → lime marquee band (tilted) → cream section → dark. An
-  oversized "DoAi" wordmark bleeds off the footer.
+  oversized wordmark bleeds off the footer.
 - **Accessibility:** real buttons and links, ≥44px targets, 4.5:1 contrast,
   everything static under reduced motion.
 
@@ -94,8 +126,8 @@ Lighthouse a11y ≥ 95.
 
 ## 6. Open questions
 
-1. Domain: `doaisystems.co.uk` or a product domain? (`call.doaisystems.co.uk`
-   still points at the retired Hetzner box.)
+1. Domain for Kikai? (`call.doaisystems.co.uk` still points at the retired
+   Hetzner box.)
 2. Salon-only, or a parallel generic SME page from day one?
 3. Real pricing and plan split (the canvas shows 3 tiers as a placeholder).
 4. Can a launch salon be named, and quoted, on the site?
