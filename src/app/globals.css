@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/*
+ * The "Olive" palette: the same olive and warm cream as the Kikai app, with
+ * blush for the moments something got booked. Every colour on the site comes
+ * from here; a component that needs a new one adds it here first.
+ */
+@theme {
+  --color-paper: #fbfaf6;
+  --color-card: #f3f1ea;
+  --color-line: #e7e4da;
+  --color-line-strong: #d8d4c7;
+
+  --color-ink: #1f2414;
+  --color-ink-soft: #3f4532;
+  --color-muted: #646a58;
+
+  --color-olive: #3f4a26;
+  --color-olive-tint: #eceee2;
+  --color-olive-text: #4a5a2a;
+
+  --color-blush: #f2dcd2;
+  --color-sage: #e3e8d4;
+  --color-alert: #d93d42;
+  --color-connected: #1f9d55;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-ring: ring 2s ease-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes ring {
+    0% {
+      box-shadow: 0 0 0 0 rgb(63 74 38 / 0.35);
+    }
+    70% {
+      box-shadow: 0 0 0 14px rgb(63 74 38 / 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgb(63 74 38 / 0);
+    }
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-olive);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
