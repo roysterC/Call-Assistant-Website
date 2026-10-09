@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { PlayIcon } from "./ui";
+import { Pause, Play } from "@phosphor-icons/react/ssr";
 
 /** Plays one recorded call. Starting one call stops any other that is playing. */
 export function AudioButton({ src, label }: { src: string; label: string }) {
@@ -37,16 +37,9 @@ export function AudioButton({ src, label }: { src: string; label: string }) {
         type="button"
         aria-label={`${playing ? "Pause" : "Play"} call: ${label}`}
         onClick={() => (playing ? audio.current?.pause() : audio.current?.play())}
-        className="grid size-12 place-items-center rounded-full bg-olive text-white"
+        className="grid size-12 place-items-center rounded-full bg-olive text-on-olive transition-transform active:scale-[0.96]"
       >
-        {playing ? (
-          <svg className="size-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <rect x="6" y="4" width="4" height="16" rx="1" />
-            <rect x="14" y="4" width="4" height="16" rx="1" />
-          </svg>
-        ) : (
-          <PlayIcon className="size-3.5" />
-        )}
+        {playing ? <Pause size={14} weight="fill" aria-hidden="true" /> : <Play size={14} weight="fill" aria-hidden="true" />}
       </button>
     </>
   );

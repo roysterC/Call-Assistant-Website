@@ -27,11 +27,18 @@ except for one route handler, `/api/lead`.
 src/app/            pages: / (home), /start (sign-up), /api/lead, sitemap, robots, icon
 src/components/     one file per section of the home page, plus ui.tsx (buttons, icons)
 src/content/site.ts every claim, figure and FAQ on the site
-public/images/      hero and product photography
+public/images/      hero photography, plus real screenshots of the CRM
 ```
 
+The product images (`diary-desktop.jpg`, `assistant-phone.jpg` and
+`screens/`) are screenshots of the CRM running locally with an invented demo
+salon, "Fern Studio": made-up clients and Ofcom's drama-reserved 07700 900xxx
+numbers, never a real salon's data. Retake them when the CRM's screens change.
+
 Colours come only from the `@theme` block in `src/app/globals.css`, which is
-the "Olive" palette, matching the app.
+the "Olive" palette, matching the app. Dark mode follows the visitor's system
+setting by redefining the same tokens there. Icons come from
+`@phosphor-icons/react`.
 
 ## Settings
 
