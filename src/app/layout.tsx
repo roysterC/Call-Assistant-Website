@@ -8,8 +8,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Kikai — the AI receptionist for UK salons",
-    template: "%s · Kikai",
+    default: "Kikai: the AI receptionist for UK salons",
+    template: "%s | Kikai",
   },
   description: site.description,
   openGraph: {
@@ -22,7 +22,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fbfaf6",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fbfaf6" },
+    { media: "(prefers-color-scheme: dark)", color: "#12150d" },
+  ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
