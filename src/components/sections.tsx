@@ -73,7 +73,7 @@ export function Pricing() {
         <div className="flex w-full max-w-[520px] flex-col gap-6 rounded-panel bg-surface p-9 shadow-lift">
           <div className="flex items-center justify-between">
             <span className="text-xl font-medium">Kikai</span>
-            <span className="rounded-full bg-blush px-3 py-1 text-[13px] font-medium">Live in a week</span>
+            <span className="rounded-full bg-olive-tint px-3 py-1 text-[13px] font-medium">Live in a week</span>
           </div>
           {pricing.monthly ? (
             <p className="flex items-baseline gap-2">
