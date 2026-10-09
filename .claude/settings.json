@@ -1,0 +1,17 @@
+{
+  "extraKnownMarketplaces": {
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable",
+        "ref": "cli-v4.5.2"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "impeccable@impeccable": true
+  },
+  "env": {
+    "IMPECCABLE_NO_TELEMETRY": "1"
+  }
+}
