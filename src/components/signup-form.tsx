@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { pricing } from "@/content/site";
-import { ArrowIcon, CheckIcon } from "./ui";
+import { ArrowRight, Check } from "@phosphor-icons/react/ssr";
 
+// The values are what /api/lead accepts and the CRM receives; only the label shown changes.
 const SIZES = ["Just me", "2–4", "5–9", "10+"] as const;
+const sizeLabel = (s: (typeof SIZES)[number]) => s.replace("–", "-");
 const CHANNELS = [
   { name: "Phone", sub: "Your existing number" },
   { name: "WhatsApp", sub: "Business account" },
@@ -17,7 +19,7 @@ const STEPS = ["Your salon", "Your number", "Go live"];
 
 type Status = "idle" | "sending" | "done" | "not_configured" | "error";
 
-const input = "min-h-13 rounded-[14px] border border-line-strong bg-white px-4 text-base";
+const input = "min-h-13 rounded-part border border-field bg-raised px-4 text-base placeholder:text-muted";
 const labelCls = "text-sm font-medium";
 
 export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
@@ -57,17 +59,17 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
   }
 
   return (
-    <div className="mx-auto flex max-w-[1408px] flex-wrap items-start gap-x-16 gap-y-8 px-6 pt-6 pb-20">
+    <div className="mx-auto flex max-w-[1360px] flex-wrap items-start gap-x-16 gap-y-8 px-5 pt-8 pb-24 sm:px-8">
       <div className="flex min-w-0 max-w-[680px] flex-[999_1_560px] flex-col gap-8">
         <ol aria-label="Progress" className="flex flex-wrap gap-2 text-sm">
           {STEPS.map((s, i) => (
             <li
               key={s}
               aria-current={i === step ? "step" : undefined}
-              className={`inline-flex items-center gap-2 rounded-full py-1.5 pr-3.5 pl-1.5 ${i === step ? "bg-olive text-white" : i < step ? "bg-olive-tint text-ink" : "bg-card text-muted"}`}
+              className={`inline-flex items-center gap-2 rounded-full py-1.5 pr-3.5 pl-1.5 ${i === step ? "bg-accent text-on-accent" : i < step ? "bg-accent-tint text-ink" : "bg-sunk text-muted"}`}
             >
-              <span className={`grid size-[22px] place-items-center rounded-full bg-white font-mono text-xs ${i === step ? "text-ink" : ""}`}>
-                {i < step ? <CheckIcon className="size-3" strokeWidth={3} /> : i + 1}
+              <span className={`grid size-[22px] place-items-center rounded-full bg-raised text-xs tabular-nums ${i === step ? "text-ink" : ""}`}>
+                {i < step ? <Check size={12} weight="bold" aria-hidden="true" /> : i + 1}
               </span>
               {s}
             </li>
@@ -77,7 +79,7 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
         {step === 0 && (
           <form onSubmit={next} className="flex flex-col gap-8">
             <div>
-              <h1 className="mb-2 text-[clamp(2.5rem,4.4vw,3.75rem)] leading-none font-normal tracking-[-0.04em]">Tell us about your salon</h1>
+              <h1 className="mb-2 display text-[clamp(2.5rem,4.4vw,3.75rem)]">Tell us about your salon</h1>
               <p className="text-lg text-muted">Two minutes. We’ll use this to build your receptionist before our call.</p>
             </div>
 
@@ -105,9 +107,9 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
                     type="button"
                     aria-pressed={s === size}
                     onClick={() => setSize(s)}
-                    className={`min-h-12 rounded-full border-[1.5px] px-5.5 font-medium ${s === size ? "border-olive bg-olive text-white" : "border-line-strong bg-white"}`}
+                    className={`min-h-12 rounded-full border-[1.5px] px-5.5 font-medium transition-[background-color,transform] active:scale-[0.98] ${s === size ? "border-accent bg-accent text-on-accent" : "border-field bg-raised"}`}
                   >
-                    {s}
+                    {sizeLabel(s)}
                   </button>
                 ))}
               </div>
@@ -126,14 +128,14 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
                       type="button"
                       aria-pressed={on}
                       onClick={() => toggle(c.name)}
-                      className={`flex min-h-16 items-center justify-between gap-3 rounded-2xl border-[1.5px] px-4 text-left ${on ? "border-olive bg-olive-tint" : "border-line-strong bg-white"}`}
+                      className={`flex min-h-16 items-center justify-between gap-3 rounded-card border-[1.5px] px-4 text-left transition-colors ${on ? "border-accent bg-accent-tint" : "border-field bg-raised"}`}
                     >
                       <span className="flex flex-col">
                         <span className="font-medium">{c.name}</span>
                         <span className="text-[13px] text-muted">{c.sub}</span>
                       </span>
-                      <span aria-hidden="true" className={`grid size-[22px] flex-none place-items-center rounded-[7px] border-[1.5px] ${on ? "border-olive bg-olive text-white" : "border-line-strong bg-white text-transparent"}`}>
-                        <CheckIcon className="size-3" strokeWidth={3.2} />
+                      <span aria-hidden="true" className={`grid size-[22px] flex-none place-items-center rounded-full border-[1.5px] ${on ? "border-accent bg-accent text-on-accent" : "border-field bg-raised text-transparent"}`}>
+                        <Check size={12} weight="bold" />
                       </span>
                     </button>
                   );
@@ -154,9 +156,9 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <button type="submit" className="inline-flex min-h-14 items-center gap-2.5 rounded-full bg-olive px-8 text-[17px] font-medium text-white">
+              <button type="submit" className="inline-flex min-h-14 items-center gap-2.5 rounded-full bg-accent px-8 text-[17px] font-medium text-on-accent transition-[background-color,transform] hover:bg-accent-hover active:scale-[0.98]">
                 Continue
-                <ArrowIcon />
+                <ArrowRight size={16} weight="bold" aria-hidden="true" />
               </button>
               <span className="text-sm text-muted">Nothing to pay today.</span>
             </div>
@@ -166,7 +168,7 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
         {step === 1 && (
           <form onSubmit={submit} className="flex flex-col gap-8">
             <div>
-              <h1 className="mb-2 text-[clamp(2.5rem,4.4vw,3.75rem)] leading-none font-normal tracking-[-0.04em]">Your number and you</h1>
+              <h1 className="mb-2 display text-[clamp(2.5rem,4.4vw,3.75rem)]">Your number and you</h1>
               <p className="text-lg text-muted">Who should we ring to book your setup call?</p>
             </div>
 
@@ -181,9 +183,9 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
                 ).map(([value, title, sub]) => (
                   <label
                     key={value}
-                    className={`flex cursor-pointer gap-3 rounded-2xl border-[1.5px] p-4 ${number === value ? "border-olive bg-olive-tint" : "border-line-strong bg-white"}`}
+                    className={`flex cursor-pointer gap-3 rounded-card border-[1.5px] p-4 ${number === value ? "border-accent bg-accent-tint" : "border-field bg-raised"}`}
                   >
-                    <input type="radio" name="number" value={value} checked={number === value} onChange={() => setNumber(value)} className="mt-1 accent-olive" />
+                    <input type="radio" name="number" value={value} checked={number === value} onChange={() => setNumber(value)} className="mt-1 accent-accent" />
                     <span className="flex flex-col">
                       <span className="font-medium">{title}</span>
                       <span className="text-[13px] text-muted">{sub}</span>
@@ -215,35 +217,35 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
             </div>
 
             {status === "not_configured" && (
-              <p role="alert" className="rounded-2xl bg-blush p-4">
+              <p role="alert" className="rounded-card border-[1.5px] border-alert bg-raised p-4">
                 Online sign-up isn’t switched on yet.{" "}
                 <Link href={bookingUrl} className="font-medium underline">
-                  Book a 30-minute call
+                  Book a 30-min call
                 </Link>{" "}
                 and we’ll take it from there.
               </p>
             )}
             {status === "error" && (
-              <p role="alert" className="rounded-2xl bg-blush p-4">
+              <p role="alert" className="rounded-card border-[1.5px] border-alert bg-raised p-4">
                 That didn’t go through. Try again, or{" "}
                 <Link href={bookingUrl} className="font-medium underline">
-                  book a call
+                  book a 30-min call
                 </Link>
                 .
               </p>
             )}
 
             <div className="flex flex-wrap items-center gap-3">
-              <button type="button" onClick={() => setStep(0)} className="min-h-14 rounded-full border border-line-strong px-6 font-medium">
+              <button type="button" onClick={() => setStep(0)} className="min-h-14 rounded-full border border-field px-6 font-medium transition-[background-color,transform] hover:bg-sunk active:scale-[0.98]">
                 Back
               </button>
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="inline-flex min-h-14 items-center gap-2.5 rounded-full bg-olive px-8 text-[17px] font-medium text-white disabled:opacity-60"
+                className="inline-flex min-h-14 items-center gap-2.5 rounded-full bg-accent px-8 text-[17px] font-medium text-on-accent transition-[background-color,transform] hover:bg-accent-hover active:scale-[0.98] disabled:opacity-60"
               >
                 {status === "sending" ? "Sending…" : "Send"}
-                <ArrowIcon />
+                <ArrowRight size={16} weight="bold" aria-hidden="true" />
               </button>
             </div>
           </form>
@@ -251,42 +253,42 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
 
         {step === 2 && status === "done" && (
           <div className="flex flex-col gap-4" role="status">
-            <h1 className="text-[clamp(2.5rem,4.4vw,3.75rem)] leading-none font-normal tracking-[-0.04em]">Thanks, {name.split(" ")[0]}.</h1>
+            <h1 className="display text-[clamp(2.5rem,4.4vw,3.75rem)]">Thanks, {name.split(" ")[0]}.</h1>
             <p className="max-w-[46ch] text-lg text-muted">
               We’ve got {salon}’s details. We’ll be in touch to book your setup call, then you’re live in about a week.
             </p>
-            <Link href="/" className="self-start font-medium text-olive-text underline">
+            <Link href="/" className="self-start font-medium text-accent-text underline">
               Back to the home page
             </Link>
           </div>
         )}
       </div>
 
-      <aside className="flex min-w-0 flex-[1_1_360px] flex-col gap-6 rounded-[28px] bg-olive-tint p-7">
+      <aside className="flex min-w-0 flex-[1_1_360px] flex-col gap-6 rounded-panel bg-sage p-7">
         <div className="flex items-center justify-between">
-          <span className="text-xl font-medium">Your Kikai</span>
-          <span className="rounded-full bg-white px-3 py-1 text-[13px] font-medium">Live in a week</span>
+          <span className="display text-2xl">Your Kikai</span>
+          <span className="rounded-full bg-raised px-3 py-1 text-[13px] font-medium">Live in about a week</span>
         </div>
-        <div className="flex flex-col gap-2.5 rounded-[18px] bg-white p-5">
-          <span className="font-mono text-xs text-muted">{size.toUpperCase()} · TAKING BOOKINGS</span>
+        <div className="flex flex-col gap-2.5 rounded-card bg-raised p-5">
+          <span className="text-sm text-muted">{sizeLabel(size)} taking bookings</span>
           <span className="text-[17px]">{channels.length ? CHANNELS.filter((c) => channels.includes(c.name)).map((c) => c.name).join(", ") : "Pick at least one channel"}</span>
           {pricing.monthly && (
             <p className="mt-2 flex items-baseline gap-1.5">
-              <span className="text-5xl leading-none tracking-[-0.05em]">{pricing.monthly}</span>
+              <span className="display text-5xl tabular-nums">{pricing.monthly}</span>
               <span className="text-muted">/ month</span>
             </p>
           )}
-          <span className="font-mono text-xs text-muted">{pricing.setup ? `+ ${pricing.setup} one-off setup` : "+ one-off setup fee"}</span>
+          <span className="text-sm text-muted">{pricing.setup ? `+ ${pricing.setup} one-off setup` : "+ one-off setup fee"}</span>
         </div>
         <div className="flex flex-col">
-          <span className="mb-3 font-mono text-xs tracking-[0.06em] text-muted uppercase">What happens next</span>
+          <span className="mb-3 text-sm font-medium text-muted">What happens next</span>
           {[
             ["Your number", "Forward the number you have, or get a new one."],
             ["A 30-minute call", "We go through your price list, team and rules."],
             ["Go live", "Usually within a week. We test it with you first."],
           ].map(([t, b], i) => (
             <div key={t} className="flex gap-3.5 border-t border-line-strong py-3">
-              <span className="grid size-7 flex-none place-items-center rounded-full bg-white font-mono text-xs text-olive-text">{i + 1}</span>
+              <span className="grid size-7 flex-none place-items-center rounded-full bg-raised text-xs tabular-nums text-accent-text">{i + 1}</span>
               <div>
                 <p className="font-medium">{t}</p>
                 <p className="text-sm text-muted">{b}</p>

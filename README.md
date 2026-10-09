@@ -1,9 +1,10 @@
 # Kikai website
 
-The marketing site for Kikai, the AI receptionist for UK salons. The product
-itself (the CRM, receptionist and chat bots) lives in
-[`roysterC/call-assistant`](https://github.com/roysterC/call-assistant).
-The design direction, sitemap and roadmap are in [PLAN.md](PLAN.md).
+The marketing site for Kikai, the AI receptionist for hair, nail and beauty
+salons in the UK. The product itself (the CRM, receptionist and chat bots)
+lives in [`roysterC/call-assistant`](https://github.com/roysterC/call-assistant).
+[PLAN.md](PLAN.md) has the original positioning and roadmap; this version of
+the site ("day and night", below) replaces the "Clean Desk" layout it describes.
 
 ## Run it
 
@@ -19,19 +20,41 @@ Before pushing: `npm run typecheck && npm run lint && npm run build`.
 
 ## Stack
 
-Next.js 16 (App Router, Turbopack), React 19, Tailwind CSS 4 and the Geist
-font. These are the same versions and fonts as the CRM. The site is static
-except for one route handler, `/api/lead`.
+Next.js 16 (App Router, Turbopack), React 19 and Tailwind CSS 4, the same
+versions as the CRM. Motion (`motion/react`) for scroll-linked movement,
+Phosphor for icons. Type is Bricolage Grotesque for headlines (self-hosted in
+`src/app/fonts/`, SIL Open Font License) and Geist for everything else. The site
+is static except for one route handler, `/api/lead`.
 
 ```
 src/app/            pages: / (home), /start (sign-up), /api/lead, sitemap, robots, icon
-src/components/     one file per section of the home page, plus ui.tsx (buttons, icons)
+src/components/     one file per section of the home page, plus ui.tsx and motion.tsx
 src/content/site.ts every claim, figure and FAQ on the site
-public/images/      hero and product photography
+public/images/      hero photography, plus real screenshots of the CRM
 ```
 
-Colours come only from the `@theme` block in `src/app/globals.css`, which is
-the "Olive" palette, matching the app.
+### Design: "day and night"
+
+The home page follows a salon's phone through one day. "A day at your front
+desk" pins a clock on wide screens while six real situations scroll past, and
+the page turns to night once the salon has shut. Every colour comes from the
+`@theme` block in `src/app/globals.css`: a cool chalk ground, olive-black ink,
+the app's brand olive for the logo, and one accent, a nail-polish red, for
+buttons and anything booked. The `.night` scope reuses the dark-mode values,
+so after-hours sections look the same whatever the visitor's system setting.
+Movement is switched off for visitors who prefer reduced motion.
+
+The product images (`diary-desktop.jpg`, `assistant-phone.jpg` and
+`screens/`) are screenshots of the CRM running locally with an invented demo
+salon, "Fern Studio": made-up clients and Ofcom's drama-reserved numbers
+(07700 900xxx, 0113 496 0xxx), never a real salon's data. Retake them when the
+CRM's screens change.
+
+Keep the copy to what the product does. In particular, only the phone
+receptionist books, moves and cancels appointments. The WhatsApp, Instagram,
+Facebook and website bots answer from the salon's settings and take a name and
+number for the team; they can't see the diary (`src/lib/salon-knowledge.ts` in
+the CRM).
 
 ## Settings
 
@@ -51,16 +74,11 @@ an invented number.
 - **Prices:** `pricing.monthly`, `pricing.setup`, `pricing.phoneRate` and
   `pricing.contractTerm`. The price card reads "Priced per salon" until then,
   and the "How do I cancel?" FAQ is hidden.
-- **Receptionist comparison:** `pricing.receptionistYear` and
-  `pricing.kikaiYear`. Without them the headline is "Everything a receptionist
-  does. For a fraction of the cost."
-- **Salon count** for the line under the hero: `salonCount`.
-- **Reviews:** real quotes with permission. The reviews section isn't built
-  yet; add it once there are quotes.
-- **Call recordings:** add `audio` (a file in `public/`) and `length` to each
-  entry in `calls`. A play button appears on each card that has one.
-- **Photography at 2048px or more.** The current images are 1024px, so they're
-  soft on large screens. A portrait crop of the hero would also help phones.
+- **Reviews:** real quotes with permission. There's no reviews section yet;
+  add one once there are quotes.
+- **Photography at 2048px or more.** The hero photo is 1024px, so it's soft on
+  large screens. The site now speaks to nail and beauty salons too, and a nail
+  or lash photo would show that better than copy can.
 - **Lead webhook, booking link and widget site id** (see Settings above).
 - **Domain.** Set `NEXT_PUBLIC_SITE_URL`.
 

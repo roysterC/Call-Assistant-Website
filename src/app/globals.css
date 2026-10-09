@@ -1,73 +1,164 @@
 @import "tailwindcss";
 
 /*
- * The "Olive" palette: the same olive and warm cream as the Kikai app, with
- * blush for the moments something got booked. Every colour on the site comes
- * from here; a component that needs a new one adds it here first.
+ * Kikai v2: "day and night".
+ *
+ * Day is a cool chalk ground with olive-black ink. Night is the brand olive
+ * taken almost to black. One accent, a nail-polish red, marks what you can
+ * press and what got booked. Every colour on the site comes from here.
+ *
+ * The same night values serve two jobs: the visitor's dark mode, and the
+ * `.night` scope (the after-hours part of the day story and the closing
+ * panel), which is dark in both modes on purpose.
+ *
+ * Shapes: 10px for small parts (inputs, rows), 18px for cards, 28px for
+ * panels and media, fully round for anything you press and for status chips.
+ * The logo keeps its own 9px corner.
  */
 @theme {
-  --color-paper: #fbfaf6;
-  --color-card: #f3f1ea;
-  --color-line: #e7e4da;
-  --color-line-strong: #d8d4c7;
+  --color-ground: #f1f2ec;
+  --color-raised: #f8f9f4;
+  --color-sunk: #e7e9df;
+  --color-line: #d9dccf;
+  --color-line-strong: #c4c8b8;
+  /* Form-field borders: 3:1 against raised (WCAG 1.4.11). */
+  --color-field: #8a8f7d;
 
-  --color-ink: #1f2414;
-  --color-ink-soft: #3f4532;
-  --color-muted: #646a58;
+  --color-ink: #141810;
+  --color-ink-soft: #3a4031;
+  --color-muted: #5d6353;
 
-  --color-olive: #3f4a26;
-  --color-olive-tint: #eceee2;
-  --color-olive-text: #4a5a2a;
+  /* The one accent. 5:1 with on-accent text. */
+  --color-accent: #c03f26;
+  --color-accent-hover: #a8361f;
+  --color-on-accent: #fff8f3;
+  /* "Booked" chips and highlights. */
+  --color-accent-tint: #f3d6cc;
+  --color-accent-text: #a8361f;
 
-  --color-blush: #f2dcd2;
-  --color-sage: #e3e8d4;
-  --color-alert: #d93d42;
-  --color-connected: #1f9d55;
+  /* "Left a message" chips and quiet panels. */
+  --color-sage: #dfe5cf;
 
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-ring: ring 2s ease-out infinite;
+  /* The brand mark, fixed in both modes. */
+  --color-brand: #3f4a26;
+  --color-brand-dot: #f2dcd2;
 
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-6px);
+  /* After hours: the ground of the .night scope, the same in both modes. */
+  --color-night: #0b0e07;
+  /* The page's own ground, for fading out of .night (which redefines ground). */
+  --color-dawn: #f1f2ec;
+
+  /* Shown behind photography while it loads. */
+  --color-photo: #a39886;
+
+  /* Form errors only. */
+  --color-alert: #b3261e;
+
+  --radius-part: 10px;
+  --radius-card: 18px;
+  --radius-panel: 28px;
+
+  --shadow-lift: 0 30px 60px -30px rgb(20 24 16 / 0.28);
+  --shadow-float: 0 18px 40px -18px rgb(20 24 16 / 0.32);
+
+  /* The hero's entrance. CSS rather than JS, so it starts with the first paint. */
+  --animate-mask: mask-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes mask-rise {
+    from {
+      transform: translateY(105%);
     }
   }
 
-  @keyframes ring {
-    0% {
-      box-shadow: 0 0 0 0 rgb(63 74 38 / 0.35);
-    }
-    70% {
-      box-shadow: 0 0 0 14px rgb(63 74 38 / 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgb(63 74 38 / 0);
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(var(--rise, 16px));
     }
   }
 }
 
 @theme inline {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-bricolage), var(--font-geist-sans), ui-sans-serif, sans-serif;
+}
+
+/* Night values, shared by dark mode and the .night scope. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-ground: #11150b;
+    --color-raised: #1a2012;
+    --color-sunk: #151a0e;
+    --color-line: #2a3120;
+    --color-line-strong: #3a4230;
+    --color-field: #6f7562;
+    --color-ink: #eef0e4;
+    --color-ink-soft: #c9cdb9;
+    --color-muted: #a3a993;
+    --color-accent: #ef7656;
+    --color-accent-hover: #f58a6c;
+    --color-on-accent: #0f1309;
+    --color-accent-tint: #4a2219;
+    --color-accent-text: #f0805f;
+    --color-sage: #2a3320;
+    --color-photo: #3a352c;
+    --color-alert: #f2867a;
+    --color-dawn: #11150b;
+    --shadow-lift: 0 30px 60px -30px rgb(0 0 0 / 0.65);
+    --shadow-float: 0 18px 40px -18px rgb(0 0 0 / 0.65);
+    color-scheme: dark;
+  }
 }
 
 @layer base {
+  .night {
+    --color-ground: var(--color-night);
+    --color-raised: #171c10;
+    --color-sunk: #12160c;
+    --color-line: #262d1c;
+    --color-line-strong: #39412c;
+    --color-field: #6f7562;
+    --color-ink: #eef0e4;
+    --color-ink-soft: #c9cdb9;
+    --color-muted: #a3a993;
+    --color-accent: #ef7656;
+    --color-accent-hover: #f58a6c;
+    --color-on-accent: #0f1309;
+    --color-accent-tint: #4a2219;
+    --color-accent-text: #f0805f;
+    --color-sage: #2a3320;
+    color-scheme: dark;
+    color: var(--color-ink);
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    background: var(--color-paper);
+    background: var(--color-ground);
+    color: var(--color-ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-accent-tint);
     color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-olive);
-    outline-offset: 2px;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -80,5 +171,16 @@
       animation: none !important;
       transition: none !important;
     }
+  }
+}
+
+@layer components {
+  /* Display type: Bricolage Grotesque with optical sizing. */
+  .display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1;
   }
 }
