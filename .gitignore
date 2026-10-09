@@ -15,7 +15,3 @@ next-env.d.ts
 .DS_Store
 npm-debug.log*
 .vercel
-
-# Claude Code: personal plugins, skills and settings, kept out of the repo
-.claude/skills/
-.claude/settings.local.json
