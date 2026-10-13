@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SignupForm } from "@/components/signup-form";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Logo } from "@/components/ui";
 import { site } from "@/content/site";
 
@@ -16,12 +17,15 @@ export default function StartPage() {
         <Link href="/" aria-label="Kikai home">
           <Logo />
         </Link>
-        {/* Without a booking link this would only point back at this page. */}
-        {site.bookingUrl !== "/start" && (
-          <Link href={site.bookingUrl} className="text-[15px] text-ink-soft hover:text-ink">
-            Need help? Book a 30-min call
-          </Link>
-        )}
+        <div className="flex items-center gap-4">
+          {/* Without a booking link this would only point back at this page. */}
+          {site.bookingUrl !== "/start" && (
+            <Link href={site.bookingUrl} className="text-[15px] text-ink-soft hover:text-ink">
+              Need help? Book a 30-min call
+            </Link>
+          )}
+          <ThemeToggle />
+        </div>
       </header>
       <main>
         <SignupForm bookingUrl={site.bookingUrl} />
