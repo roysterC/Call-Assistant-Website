@@ -33,9 +33,9 @@ export function SiteFooter() {
           </div>
           {columns.map((col) => (
             <nav key={col.heading} aria-label={col.heading} className="flex flex-[1_1_160px] flex-col gap-2.5 text-[15px]">
-              <span className="mb-1 font-mono text-xs tracking-[0.06em] text-muted uppercase">{col.heading}</span>
+              <span className="mb-1 text-sm font-medium text-muted">{col.heading}</span>
               {col.links.map((l) => (
-                <Link key={l.label} href={l.href} className="hover:text-olive-text">
+                <Link key={l.label} href={l.href} className="transition-colors hover:text-olive-text">
                   {l.label}
                 </Link>
               ))}

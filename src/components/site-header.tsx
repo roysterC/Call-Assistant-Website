@@ -1,5 +1,6 @@
 "use client";
 
+import { List, X } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { useState } from "react";
 import { site } from "@/content/site";
@@ -24,7 +25,7 @@ export function SiteHeader() {
 
       <nav aria-label="Main" className="hidden items-center gap-7 text-[15px] text-ink-soft lg:flex">
         {links.map((l) => (
-          <Link key={l.href} href={l.href} className="hover:text-ink">
+          <Link key={l.href} href={l.href} className="transition-colors hover:text-ink">
             {l.label}
           </Link>
         ))}
@@ -42,15 +43,13 @@ export function SiteHeader() {
         </ButtonLink>
         <button
           type="button"
-          className="grid size-11 place-items-center rounded-full border border-line-strong lg:hidden"
+          className="grid size-11 place-items-center rounded-full border border-line-strong transition-transform active:scale-[0.96] lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((o) => !o)}
         >
-          <svg className="size-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true">
-            {open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 8h16M4 16h16" />}
-          </svg>
+          {open ? <X size={18} aria-hidden="true" /> : <List size={18} aria-hidden="true" />}
         </button>
       </div>
 
@@ -58,10 +57,10 @@ export function SiteHeader() {
         <nav
           id="mobile-menu"
           aria-label="Main"
-          className="absolute inset-x-4 top-full flex flex-col rounded-2xl border border-line bg-white p-2 shadow-[0_20px_40px_-20px_rgb(0_0_0/0.25)] lg:hidden"
+          className="absolute inset-x-4 top-full flex animate-swap flex-col rounded-card border border-line bg-surface p-2 shadow-float lg:hidden"
         >
           {[...links, { href: site.loginUrl, label: "Log in" }].map((l) => (
-            <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 text-lg hover:bg-card">
+            <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="rounded-part px-4 py-3 text-lg hover:bg-card">
               {l.label}
             </Link>
           ))}

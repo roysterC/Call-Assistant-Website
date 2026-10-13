@@ -38,9 +38,9 @@ export const pricing = {
 export const salonCount: number | null = null;
 
 export const valueTiles = [
-  { mark: "24/7", title: "Answers every call", body: "Evenings, weekends, mid-foils." },
-  { mark: "→", title: "Books into your diary", body: "With your rules, not a guess." },
-  { mark: "5", title: "Every channel, one inbox", body: "Phone, WhatsApp, Instagram, Facebook, web." },
+  { title: "Answers every call", body: "Evenings, weekends, mid-foils." },
+  { title: "Books into your diary", body: "With your rules, not a guess." },
+  { title: "Every channel, one inbox", body: "Phone, WhatsApp, Instagram, Facebook, web." },
 ];
 
 export const builtOn = ["Claude by Anthropic", "Deepgram", "ElevenLabs", "Twilio", "WhatsApp Business"];

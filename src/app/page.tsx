@@ -1,5 +1,5 @@
 import { FeatureSwitcher } from "@/components/feature-switcher";
-import { Hero } from "@/components/hero";
+import { HandsFull, Hero } from "@/components/hero";
 import { BuiltOn, DeskAndPocket, HowItWorks } from "@/components/how-it-works";
 import { Calls, ClosingCta, Facts, Faq, Pricing, ValueComparison } from "@/components/sections";
 import { SiteFooter } from "@/components/site-footer";
@@ -12,6 +12,7 @@ export default function Home() {
       <SiteHeader />
       <main>
         <Hero />
+        <HandsFull />
         <BuiltOn />
         <HowItWorks />
         <DeskAndPocket />

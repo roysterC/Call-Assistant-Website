@@ -5,7 +5,7 @@ import { Logo } from "@/components/ui";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Get Kikai",
+  title: { absolute: "Get Kikai" },
   description: "Tell us about your salon and we’ll build your AI receptionist. Live in about a week.",
 };
 
@@ -16,9 +16,12 @@ export default function StartPage() {
         <Link href="/" aria-label="Kikai home">
           <Logo />
         </Link>
-        <Link href={site.bookingUrl} className="text-[15px] text-ink-soft hover:text-ink">
-          Need help? Book a call
-        </Link>
+        {/* Without a booking link this would only point back at this page. */}
+        {site.bookingUrl !== "/start" && (
+          <Link href={site.bookingUrl} className="text-[15px] text-ink-soft hover:text-ink">
+            Need help? Book a 30-min call
+          </Link>
+        )}
       </header>
       <main>
         <SignupForm bookingUrl={site.bookingUrl} />

@@ -11,16 +11,17 @@ export function StickyCta() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 700);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const hero = document.getElementById("top");
+    if (!hero) return;
+    const observer = new IntersectionObserver(([entry]) => setVisible(!entry.isIntersecting));
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div
       aria-hidden={!visible}
-      className={`fixed left-2 ${rightInset} bottom-3 z-30 flex items-center justify-between rounded-full bg-olive py-2 pr-2 pl-5 text-white shadow-[0_20px_40px_-10px_rgb(0_0_0/0.3)] transition-all duration-300 sm:hidden ${
+      className={`fixed left-2 ${rightInset} bottom-3 z-30 flex items-center justify-between rounded-full bg-brand py-2 pr-2 pl-5 text-on-brand shadow-float transition-[opacity,transform] duration-300 sm:hidden ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"
       }`}
     >

@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { pricing } from "@/content/site";
-import { ArrowIcon, CheckIcon } from "./ui";
+import { ArrowRight, Check } from "@phosphor-icons/react/ssr";
 
+// The values are what /api/lead accepts and the CRM receives; only the label shown changes.
 const SIZES = ["Just me", "2–4", "5–9", "10+"] as const;
+const sizeLabel = (s: (typeof SIZES)[number]) => s.replace("–", "-");
 const CHANNELS = [
   { name: "Phone", sub: "Your existing number" },
   { name: "WhatsApp", sub: "Business account" },
@@ -17,7 +19,7 @@ const STEPS = ["Your salon", "Your number", "Go live"];
 
 type Status = "idle" | "sending" | "done" | "not_configured" | "error";
 
-const input = "min-h-13 rounded-[14px] border border-line-strong bg-white px-4 text-base";
+const input = "min-h-13 rounded-part border border-field bg-surface px-4 text-base placeholder:text-muted";
 const labelCls = "text-sm font-medium";
 
 export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
@@ -64,10 +66,10 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
             <li
               key={s}
               aria-current={i === step ? "step" : undefined}
-              className={`inline-flex items-center gap-2 rounded-full py-1.5 pr-3.5 pl-1.5 ${i === step ? "bg-olive text-white" : i < step ? "bg-olive-tint text-ink" : "bg-card text-muted"}`}
+              className={`inline-flex items-center gap-2 rounded-full py-1.5 pr-3.5 pl-1.5 ${i === step ? "bg-olive text-on-olive" : i < step ? "bg-olive-tint text-ink" : "bg-card text-muted"}`}
             >
-              <span className={`grid size-[22px] place-items-center rounded-full bg-white font-mono text-xs ${i === step ? "text-ink" : ""}`}>
-                {i < step ? <CheckIcon className="size-3" strokeWidth={3} /> : i + 1}
+              <span className={`grid size-[22px] place-items-center rounded-full bg-surface font-mono text-xs ${i === step ? "text-ink" : ""}`}>
+                {i < step ? <Check size={12} weight="bold" aria-hidden="true" /> : i + 1}
               </span>
               {s}
             </li>
@@ -105,9 +107,9 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
                     type="button"
                     aria-pressed={s === size}
                     onClick={() => setSize(s)}
-                    className={`min-h-12 rounded-full border-[1.5px] px-5.5 font-medium ${s === size ? "border-olive bg-olive text-white" : "border-line-strong bg-white"}`}
+                    className={`min-h-12 rounded-full border-[1.5px] px-5.5 font-medium transition-[background-color,transform] active:scale-[0.98] ${s === size ? "border-olive bg-olive text-on-olive" : "border-field bg-surface"}`}
                   >
-                    {s}
+                    {sizeLabel(s)}
                   </button>
                 ))}
               </div>
@@ -126,14 +128,14 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
                       type="button"
                       aria-pressed={on}
                       onClick={() => toggle(c.name)}
-                      className={`flex min-h-16 items-center justify-between gap-3 rounded-2xl border-[1.5px] px-4 text-left ${on ? "border-olive bg-olive-tint" : "border-line-strong bg-white"}`}
+                      className={`flex min-h-16 items-center justify-between gap-3 rounded-card border-[1.5px] px-4 text-left transition-colors ${on ? "border-olive bg-olive-tint" : "border-field bg-surface"}`}
                     >
                       <span className="flex flex-col">
                         <span className="font-medium">{c.name}</span>
                         <span className="text-[13px] text-muted">{c.sub}</span>
                       </span>
-                      <span aria-hidden="true" className={`grid size-[22px] flex-none place-items-center rounded-[7px] border-[1.5px] ${on ? "border-olive bg-olive text-white" : "border-line-strong bg-white text-transparent"}`}>
-                        <CheckIcon className="size-3" strokeWidth={3.2} />
+                      <span aria-hidden="true" className={`grid size-[22px] flex-none place-items-center rounded-full border-[1.5px] ${on ? "border-olive bg-olive text-on-olive" : "border-field bg-surface text-transparent"}`}>
+                        <Check size={12} weight="bold" />
                       </span>
                     </button>
                   );
@@ -154,9 +156,9 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <button type="submit" className="inline-flex min-h-14 items-center gap-2.5 rounded-full bg-olive px-8 text-[17px] font-medium text-white">
+              <button type="submit" className="inline-flex min-h-14 items-center gap-2.5 rounded-full bg-olive px-8 text-[17px] font-medium text-on-olive transition-[background-color,transform] hover:bg-olive-hover active:scale-[0.98]">
                 Continue
-                <ArrowIcon />
+                <ArrowRight size={16} weight="bold" aria-hidden="true" />
               </button>
               <span className="text-sm text-muted">Nothing to pay today.</span>
             </div>
@@ -181,7 +183,7 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
                 ).map(([value, title, sub]) => (
                   <label
                     key={value}
-                    className={`flex cursor-pointer gap-3 rounded-2xl border-[1.5px] p-4 ${number === value ? "border-olive bg-olive-tint" : "border-line-strong bg-white"}`}
+                    className={`flex cursor-pointer gap-3 rounded-card border-[1.5px] p-4 ${number === value ? "border-olive bg-olive-tint" : "border-field bg-surface"}`}
                   >
                     <input type="radio" name="number" value={value} checked={number === value} onChange={() => setNumber(value)} className="mt-1 accent-olive" />
                     <span className="flex flex-col">
@@ -215,35 +217,35 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
             </div>
 
             {status === "not_configured" && (
-              <p role="alert" className="rounded-2xl bg-blush p-4">
+              <p role="alert" className="rounded-card border-[1.5px] border-alert bg-surface p-4">
                 Online sign-up isn’t switched on yet.{" "}
                 <Link href={bookingUrl} className="font-medium underline">
-                  Book a 30-minute call
+                  Book a 30-min call
                 </Link>{" "}
                 and we’ll take it from there.
               </p>
             )}
             {status === "error" && (
-              <p role="alert" className="rounded-2xl bg-blush p-4">
+              <p role="alert" className="rounded-card border-[1.5px] border-alert bg-surface p-4">
                 That didn’t go through. Try again, or{" "}
                 <Link href={bookingUrl} className="font-medium underline">
-                  book a call
+                  book a 30-min call
                 </Link>
                 .
               </p>
             )}
 
             <div className="flex flex-wrap items-center gap-3">
-              <button type="button" onClick={() => setStep(0)} className="min-h-14 rounded-full border border-line-strong px-6 font-medium">
+              <button type="button" onClick={() => setStep(0)} className="min-h-14 rounded-full border border-field px-6 font-medium transition-[background-color,transform] hover:bg-card active:scale-[0.98]">
                 Back
               </button>
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="inline-flex min-h-14 items-center gap-2.5 rounded-full bg-olive px-8 text-[17px] font-medium text-white disabled:opacity-60"
+                className="inline-flex min-h-14 items-center gap-2.5 rounded-full bg-olive px-8 text-[17px] font-medium text-on-olive transition-[background-color,transform] hover:bg-olive-hover active:scale-[0.98] disabled:opacity-60"
               >
                 {status === "sending" ? "Sending…" : "Send"}
-                <ArrowIcon />
+                <ArrowRight size={16} weight="bold" aria-hidden="true" />
               </button>
             </div>
           </form>
@@ -262,13 +264,13 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
         )}
       </div>
 
-      <aside className="flex min-w-0 flex-[1_1_360px] flex-col gap-6 rounded-[28px] bg-olive-tint p-7">
+      <aside className="flex min-w-0 flex-[1_1_360px] flex-col gap-6 rounded-panel bg-olive-tint p-7">
         <div className="flex items-center justify-between">
           <span className="text-xl font-medium">Your Kikai</span>
-          <span className="rounded-full bg-white px-3 py-1 text-[13px] font-medium">Live in a week</span>
+          <span className="rounded-full bg-surface px-3 py-1 text-[13px] font-medium">Live in a week</span>
         </div>
-        <div className="flex flex-col gap-2.5 rounded-[18px] bg-white p-5">
-          <span className="font-mono text-xs text-muted">{size.toUpperCase()} · TAKING BOOKINGS</span>
+        <div className="flex flex-col gap-2.5 rounded-card bg-surface p-5">
+          <span className="text-sm text-muted">{sizeLabel(size)} taking bookings</span>
           <span className="text-[17px]">{channels.length ? CHANNELS.filter((c) => channels.includes(c.name)).map((c) => c.name).join(", ") : "Pick at least one channel"}</span>
           {pricing.monthly && (
             <p className="mt-2 flex items-baseline gap-1.5">
@@ -279,14 +281,14 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
           <span className="font-mono text-xs text-muted">{pricing.setup ? `+ ${pricing.setup} one-off setup` : "+ one-off setup fee"}</span>
         </div>
         <div className="flex flex-col">
-          <span className="mb-3 font-mono text-xs tracking-[0.06em] text-muted uppercase">What happens next</span>
+          <span className="mb-3 text-sm font-medium text-muted">What happens next</span>
           {[
             ["Your number", "Forward the number you have, or get a new one."],
             ["A 30-minute call", "We go through your price list, team and rules."],
             ["Go live", "Usually within a week. We test it with you first."],
           ].map(([t, b], i) => (
             <div key={t} className="flex gap-3.5 border-t border-line-strong py-3">
-              <span className="grid size-7 flex-none place-items-center rounded-full bg-white font-mono text-xs text-olive-text">{i + 1}</span>
+              <span className="grid size-7 flex-none place-items-center rounded-full bg-surface font-mono text-xs text-olive-text">{i + 1}</span>
               <div>
                 <p className="font-medium">{t}</p>
                 <p className="text-sm text-muted">{b}</p>
