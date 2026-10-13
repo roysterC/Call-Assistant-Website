@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/content/site";
+import { ThemeSegmented } from "./theme-toggle";
 import { Container, Logo } from "./ui";
 
 const columns = [
@@ -42,9 +43,10 @@ export function SiteFooter() {
             </nav>
           ))}
         </div>
-        <div className="flex flex-wrap justify-between gap-3 border-t border-line pt-6 text-sm text-muted">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-6 text-sm text-muted">
           <span>© {new Date().getFullYear()} Kikai. Built in the UK.</span>
-          <span className="flex gap-5">
+          <span className="flex flex-wrap items-center gap-5">
+            <ThemeSegmented />
             <Link href={site.privacyUrl} className="hover:text-ink">
               Privacy
             </Link>

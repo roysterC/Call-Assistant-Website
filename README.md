@@ -36,8 +36,11 @@ salon, "Fern Studio": made-up clients and Ofcom's drama-reserved 07700 900xxx
 numbers, never a real salon's data. Retake them when the CRM's screens change.
 
 Colours come only from the `@theme` block in `src/app/globals.css`, which is
-the "Olive" palette, matching the app. Dark mode follows the visitor's system
-setting by redefining the same tokens there. Icons come from
+the "Olive" palette, matching the app. Light is the default for every
+visitor; dark mode is opt-in from the theme toggle (header icon on wide
+screens, a switch in the phone menu, and Light/Dark in the footer). The
+choice is saved in the browser and applied before first paint. Dark mode
+redefines the same tokens under `<html data-theme="dark">`. Icons come from
 `@phosphor-icons/react`.
 
 ## Settings

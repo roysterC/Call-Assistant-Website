@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { ChatWidget } from "@/components/chat-widget";
+import { PAPER, THEME_SCRIPT } from "@/lib/theme";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -21,16 +22,18 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
+// Light for everyone by default; the theme toggle updates this when a visitor picks dark.
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfaf6" },
-    { media: "(prefers-color-scheme: dark)", color: "#12150d" },
-  ],
+  themeColor: PAPER.light,
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    // THEME_SCRIPT may set data-theme before React hydrates, hence the warning suppression.
+    <html lang="en-GB" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body className="min-h-screen font-sans text-base leading-normal antialiased">
         {children}
         <ChatWidget />

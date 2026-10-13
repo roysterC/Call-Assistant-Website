@@ -5,8 +5,10 @@
  * blush for the moments something got booked. Every colour on the site comes
  * from here; a component that needs a new one adds it here first.
  *
- * Dark mode follows the visitor's system setting by redefining the same
- * tokens below, so components never carry a dark: variant of their own.
+ * Light is the default for every visitor. Dark mode is opt-in, from the
+ * theme toggle (src/components/theme-toggle.tsx), which sets
+ * <html data-theme="dark">; the block below redefines the same tokens under
+ * it, so components never carry a dark: variant of their own.
  *
  * Shapes: 12px for small parts (inputs, rows inside a card), 20px for cards,
  * 28px for panels and photography, and fully round for anything you press
@@ -79,36 +81,36 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-paper: #12150d;
-    --color-card: #1a1e13;
-    --color-surface: #1e2317;
-    --color-line: #2a3021;
-    --color-line-strong: #3a4130;
-    --color-field: #6d735f;
+:root[data-theme="dark"] {
+  --color-paper: #12150d;
+  --color-card: #1a1e13;
+  --color-surface: #1e2317;
+  --color-line: #2a3021;
+  --color-line-strong: #3a4130;
+  --color-field: #6d735f;
 
-    --color-ink: #eceee3;
-    --color-ink-soft: #c7cbb8;
-    --color-muted: #9ca18b;
+  --color-ink: #eceee3;
+  --color-ink-soft: #c7cbb8;
+  --color-muted: #9ca18b;
 
-    --color-olive: #a4b56b;
-    --color-olive-hover: #b4c47c;
-    --color-on-olive: #12150d;
-    --color-olive-tint: #1f2618;
-    --color-olive-text: #b9c88a;
+  /* Buttons turn warm cream on the dark page: no lime, still the brightest
+     thing on screen. Accent text is a quiet sage rather than a bright green. */
+  --color-olive: #ece8dc;
+  --color-olive-hover: #f7f4ec;
+  --color-on-olive: #1f2414;
+  --color-olive-tint: #1f2618;
+  --color-olive-text: #c2c8a3;
 
-    --color-blush: #4b322a;
-    --color-sage: #2c3520;
+  --color-blush: #4b322a;
+  --color-sage: #2c3520;
 
-    --color-photo: #3a352c;
-    --color-alert: #e8776f;
+  --color-photo: #3a352c;
+  --color-alert: #e8776f;
 
-    --shadow-lift: 0 30px 60px -30px rgb(0 0 0 / 0.6);
-    --shadow-float: 0 20px 40px -18px rgb(0 0 0 / 0.6);
+  --shadow-lift: 0 30px 60px -30px rgb(0 0 0 / 0.6);
+  --shadow-float: 0 20px 40px -18px rgb(0 0 0 / 0.6);
 
-    color-scheme: dark;
-  }
+  color-scheme: dark;
 }
 
 @layer base {

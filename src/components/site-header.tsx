@@ -4,6 +4,7 @@ import { List, X } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { useState } from "react";
 import { site } from "@/content/site";
+import { ThemeSwitchRow, ThemeToggle } from "./theme-toggle";
 import { ButtonLink, Logo } from "./ui";
 
 const links = [
@@ -32,6 +33,8 @@ export function SiteHeader() {
       </nav>
 
       <div className="flex items-center gap-2">
+        {/* Wide screens: an icon button beside Log in. Narrower: a row in the menu below. */}
+        <ThemeToggle className="hidden lg:grid" />
         {/* A wrapper, because ButtonLink sets its own display. */}
         <span className="hidden sm:contents">
           <ButtonLink href={site.loginUrl} variant="secondary" size="md">
@@ -64,6 +67,9 @@ export function SiteHeader() {
               {l.label}
             </Link>
           ))}
+          <div className="mt-1 border-t border-line pt-1">
+            <ThemeSwitchRow />
+          </div>
         </nav>
       )}
     </header>
