@@ -8,6 +8,7 @@
 
 import type { StaticImageData } from "next/image";
 import assistantPhone from "../../public/images/assistant-phone.jpg";
+import assistantBooking from "../../public/images/screens/assistant-booking-phone.jpg";
 import diaryDesktop from "../../public/images/diary-desktop.jpg";
 import callbacksDesktop from "../../public/images/screens/callbacks-desktop.jpg";
 import callsDesktop from "../../public/images/screens/calls-desktop.jpg";
@@ -16,6 +17,7 @@ import clientPanel from "../../public/images/screens/client-panel.jpg";
 import diaryPhone from "../../public/images/screens/diary-phone.jpg";
 import inboxDesktop from "../../public/images/screens/inbox-desktop.jpg";
 import inboxPhone from "../../public/images/screens/inbox-phone.jpg";
+import salesBreakdown from "../../public/images/screens/sales-breakdown.jpg";
 import salesDesktop from "../../public/images/screens/sales-desktop.jpg";
 import salesPhone from "../../public/images/screens/sales-phone.jpg";
 import { switching } from "./trades";
@@ -23,6 +25,9 @@ import { switching } from "./trades";
 export type ServiceIcon = "phone" | "calendar" | "microphone" | "chats" | "chart";
 
 type Shot = { image: StaticImageData; alt: string; /** CSS object-position for the crop. */ position?: string };
+
+/** On a phone the hero is cropped square; this keeps the readable part of the screen (not the sidebar) in view. */
+type HeroShot = Shot & { kind: "desktop" | "phone"; phonePosition?: string };
 
 export type Service = {
   slug: string;
@@ -39,10 +44,11 @@ export type Service = {
   /** Under the headline: 20 words at most. */
   intro: string;
   /** "desktop" frames a wide screenshot; "phone" stands a phone screenshot in a bezel. */
-  hero: Shot & { kind: "desktop" | "phone" };
+  hero: HeroShot;
   values: {
     heading: string;
-    feature: Shot & { title: string; body: string };
+    /** `panel` shows a tall screenshot (a side panel) at its own size, from the top, instead of cropping it. */
+    feature: Shot & { title: string; body: string; layout?: "panel" };
     others: [{ title: string; body: string }, { title: string; body: string }];
   };
   details: { heading: string; phone: Shot; items: { lead: string; body: string }[] };
@@ -61,12 +67,12 @@ export const services: Service[] = [
       "Kikai’s AI receptionist answers your salon’s phone day and night, books straight into the diary and takes proper messages. Keep your number.",
     h1: ["Every call answered.", "Every booking in the diary."],
     intro: "Kikai answers your salon’s number day and night, in your salon’s name, and books straight into the diary.",
-    hero: { kind: "desktop", image: callsDesktop, alt: "Call History in Kikai: one line per call, with what happened" },
+    hero: { kind: "desktop", image: callsDesktop, alt: "Call History in Kikai: one line per call, with what happened", phonePosition: "52% 0%" },
     values: {
       heading: "What it does for your salon",
       feature: {
         title: "Never loses a message",
-        body: "Asked for someone? It takes a name, number and reason, and puts it at the top of Callbacks.",
+        body: "Asked for someone? It takes a name, number and reason, and puts it in Callbacks for whoever rings back.",
         image: callbacksDesktop,
         alt: "The Callbacks page with two messages waiting",
       },
@@ -107,7 +113,7 @@ export const services: Service[] = [
       "One diary for the whole salon: every stylist’s column, no double bookings, text confirmations and reminders, and every client’s history on one page.",
     h1: ["One diary for the whole salon."],
     intro: "Every stylist’s column in one place. Kikai knows who does what and never double-books.",
-    hero: { kind: "desktop", image: diaryDesktop, alt: "The Kikai diary with a column for each stylist" },
+    hero: { kind: "desktop", image: diaryDesktop, alt: "The Kikai diary with a column for each stylist", phonePosition: "38% 0%" },
     values: {
       heading: "Less admin, fewer gaps",
       feature: {
@@ -115,6 +121,7 @@ export const services: Service[] = [
         body: "Visits, notes and patch tests on one page, ready the moment they ring.",
         image: clientPanel,
         alt: "A client’s page with their patch test, notes and bookings",
+        layout: "panel",
       },
       others: [
         { title: "Knows who does what", body: "Each stylist’s services and working days, so nobody is booked for work they don’t do." },
@@ -166,12 +173,12 @@ export const services: Service[] = [
     },
     details: {
       heading: "Made for hands that are busy",
-      phone: { image: assistantPhone, alt: "The assistant on a phone" },
+      phone: { image: assistantBooking, alt: "The assistant drafting a booking for Amara with Jess on Saturday, ready to save" },
       items: [
         { lead: "Desk or phone.", body: "The same assistant at the front desk and in your pocket." },
         { lead: "Hands-free.", body: "Start it from Siri or Google Assistant without touching the screen." },
         { lead: "Same rules as the phone line.", body: "Your hours, who does what and no double-booking." },
-        { lead: "You stay in charge.", body: "Every change waits for a yes. Only owners can text clients." },
+        { lead: "You stay in charge.", body: "Every change waits for a yes, and only owners can send a client a one-off text." },
         { lead: "Speaks or stays quiet.", body: "Replies are read aloud in a British voice, or switched off." },
       ],
     },
@@ -195,7 +202,7 @@ export const services: Service[] = [
       "WhatsApp, Instagram, Facebook and website chat in one inbox, answered for you from your price list, with a page for every client.",
     h1: ["Every message answered.", "Every client remembered."],
     intro: "WhatsApp, Instagram, Facebook and website chat in one inbox, answered for you from your price list.",
-    hero: { kind: "desktop", image: inboxDesktop, alt: "The Kikai inbox with a WhatsApp booking open" },
+    hero: { kind: "desktop", image: inboxDesktop, alt: "The Kikai inbox with a WhatsApp booking open", phonePosition: "50% 0%" },
     values: {
       heading: "One place for every conversation",
       feature: {
@@ -203,6 +210,7 @@ export const services: Service[] = [
         body: "Contact details, visits, notes and patch tests, whichever channel they came from.",
         image: clientPanel,
         alt: "A client’s page with their patch test, notes and bookings",
+        layout: "panel",
       },
       others: [
         { title: "One inbox", body: "Every channel in one list, filtered by channel, unread or starred." },
@@ -238,15 +246,14 @@ export const services: Service[] = [
       "Takings by day, week, month or year, by stylist and service. What you took and what’s still booked, kept apart, with no-shows listed.",
     h1: ["Know what you took.", "Know what’s coming."],
     intro: "Takings by day, week, month or year, by stylist and service, with no-shows counted separately.",
-    hero: { kind: "desktop", image: salesDesktop, alt: "The Sales report: taken, still booked, average and no-shows" },
+    hero: { kind: "desktop", image: salesDesktop, alt: "The Sales report: taken, still booked, average and no-shows", phonePosition: "40% 0%" },
     values: {
       heading: "Numbers you can run a salon on",
       feature: {
         title: "Who’s busiest, at a glance",
-        body: "Takings for each stylist, side by side, for any day, week, month or year.",
-        image: salesDesktop,
-        alt: "Takings by stylist in the Sales report",
-        position: "18% 24%",
+        body: "Takings by stylist and by service, side by side, for any day, week, month or year.",
+        image: salesBreakdown,
+        alt: "Takings by stylist and by service in the Sales report",
       },
       others: [
         { title: "Taken and still booked, kept apart", body: "Money that changed hands and what’s in the diary, never added together." },

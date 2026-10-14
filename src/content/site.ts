@@ -56,7 +56,7 @@ export const features = [
   },
   {
     title: "Takes proper messages",
-    body: "Asked for a person? It takes a name, number and what it’s about, and puts it at the top of your Callbacks.",
+    body: "Asked for a person? It takes a name, number and what it’s about, and puts it in your Callbacks.",
   },
   {
     title: "Runs the desk from your pocket",

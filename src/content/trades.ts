@@ -83,7 +83,7 @@ export const trades: Trade[] = [
       },
       {
         question: "Can I speak to Sam?",
-        answer: "It never transfers. It takes a name, number and what it’s about, and puts it at the top of your Callbacks.",
+        answer: "It never transfers. It takes a name, number and what it’s about, and puts it in your Callbacks.",
         outcome: "Left a message",
       },
       {
