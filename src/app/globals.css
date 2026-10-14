@@ -12,7 +12,7 @@
  *
  * Shapes: 12px for small parts (inputs, rows inside a card), 20px for cards,
  * 28px for panels and photography, and fully round for anything you press
- * (buttons, toggles) and for status chips. The logo keeps its own 9px corner.
+ * (buttons, toggles) and for status chips.
  */
 @theme {
   --color-paper: #fbfaf6;
@@ -28,10 +28,9 @@
   --color-ink-soft: #3f4532;
   --color-muted: #646a58;
 
-  /* The brand olive, the logo dot and text on brand olive. Fixed in both modes:
-     the logo, the closing panel and the phone sign-up bar look the same in dark. */
+  /* The brand olive and text on brand olive. Fixed in both modes: the closing
+     panel and the phone sign-up bar look the same in dark. */
   --color-brand: #3f4a26;
-  --color-brand-dot: #f2dcd2;
   --color-on-brand: #fbfaf6;
   /* The accent for buttons and selected states; lifts in dark mode so the
      call to action still stands out against a dark page. */
@@ -84,6 +83,15 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
+:root {
+  /* The logo (src/components/logo.tsx): navy K and wordmark, and the node's
+     teal to violet ring, as in the brand artwork. Plain variables rather than
+     @theme, as no utility uses them. */
+  --color-logo: #061842;
+  --color-logo-node-from: #41859d;
+  --color-logo-node-to: #835eb4;
+}
+
 :root[data-theme="dark"] {
   --color-paper: #12150d;
   --color-card: #1a1e13;
@@ -106,6 +114,9 @@
 
   --color-blush: #4b322a;
   --color-sage: #2c3520;
+
+  /* Navy vanishes on the dark page, so the K and wordmark turn cream; the node keeps its colours. */
+  --color-logo: #eceee3;
 
   --color-photo: #3a352c;
   --color-bezel: #6d735f;

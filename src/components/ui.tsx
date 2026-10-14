@@ -39,16 +39,7 @@ export function SectionHeading({ children, className = "", id }: { children: Rea
 }
 
 /** The brand mark. Its colours are fixed: it looks the same in dark mode. */
-export function Logo({ className = "" }: { className?: string }) {
-  return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <span aria-hidden="true" className="grid size-7 place-items-center rounded-[9px] bg-brand">
-        <span className="size-2.5 rounded-full bg-brand-dot" />
-      </span>
-      <span className="text-[22px] font-semibold tracking-[-0.04em]">kikai</span>
-    </span>
-  );
-}
+export { Logo } from "./logo";
 
 export function Container({ children, className = "", ...props }: ComponentProps<"div">) {
   return (
