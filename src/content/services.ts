@@ -8,6 +8,7 @@
 
 import type { StaticImageData } from "next/image";
 import assistantPhone from "../../public/images/assistant-phone.jpg";
+import assistantBooking from "../../public/images/screens/assistant-booking-phone.jpg";
 import diaryDesktop from "../../public/images/diary-desktop.jpg";
 import callbacksDesktop from "../../public/images/screens/callbacks-desktop.jpg";
 import callsDesktop from "../../public/images/screens/calls-desktop.jpg";
@@ -166,7 +167,7 @@ export const services: Service[] = [
     },
     details: {
       heading: "Made for hands that are busy",
-      phone: { image: assistantPhone, alt: "The assistant on a phone" },
+      phone: { image: assistantBooking, alt: "The assistant drafting a booking for Amara with Jess on Saturday, ready to save" },
       items: [
         { lead: "Desk or phone.", body: "The same assistant at the front desk and in your pocket." },
         { lead: "Hands-free.", body: "Start it from Siri or Google Assistant without touching the screen." },
