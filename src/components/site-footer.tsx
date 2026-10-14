@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/content/site";
+import { trades } from "@/content/trades";
 import { ThemeSegmented } from "./theme-toggle";
 import { Container, Logo } from "./ui";
 
@@ -12,6 +13,10 @@ const columns = [
       { href: "/#pricing", label: "Pricing" },
       { href: site.loginUrl, label: "Log in" },
     ],
+  },
+  {
+    heading: "Businesses",
+    links: trades.map((t) => ({ href: `/for/${t.slug}`, label: t.label })),
   },
   {
     heading: "Get started",

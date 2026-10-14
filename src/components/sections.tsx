@@ -120,14 +120,15 @@ export function Facts() {
   );
 }
 
-export function Faq() {
-  const answered = faqs.filter((f): f is { q: string; a: string } => f.a !== null);
+const answeredFaqs = faqs.filter((f): f is { q: string; a: string } => f.a !== null);
+
+export function Faq({ items = answeredFaqs, heading = "Questions" }: { items?: { q: string; a: string }[]; heading?: string }) {
   return (
     <section id="faq" className="reveal scroll-mt-6 pt-10 pb-28">
       <Container className="flex flex-col gap-10">
-        <SectionHeading>Questions</SectionHeading>
+        <SectionHeading>{heading}</SectionHeading>
         <div className="w-full max-w-[880px] border-t border-line">
-          {answered.map((f, i) => (
+          {items.map((f, i) => (
             <details key={f.q} open={i === 0} className="group border-b border-line">
               <summary className="flex min-h-18 cursor-pointer list-none items-center justify-between gap-6 py-4 text-xl tracking-[-0.02em] [&::-webkit-details-marker]:hidden">
                 {f.q}
