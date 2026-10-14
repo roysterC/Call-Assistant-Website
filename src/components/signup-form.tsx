@@ -15,7 +15,7 @@ const CHANNELS = [
   { name: "Facebook", sub: "Messenger" },
   { name: "Website chat", sub: "One line on your site" },
 ] as const;
-const STEPS = ["Your salon", "Your number", "Go live"];
+const STEPS = ["Your salon", "Your details", "Go live"];
 
 type Status = "idle" | "sending" | "done" | "not_configured" | "error";
 
@@ -143,6 +143,31 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
               </div>
             </fieldset>
 
+            {channels.includes("Phone") && (
+              <fieldset className="flex flex-col gap-2.5">
+                <legend className={`${labelCls} mb-2.5`}>Your salon’s phone number</legend>
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-2">
+                  {(
+                    [
+                      ["forward", "Keep my number", "Forward it to Kikai. Clients ring the number they know."],
+                      ["new", "Get a new number", "We’ll set up a local number for you."],
+                    ] as const
+                  ).map(([value, title, sub]) => (
+                    <label
+                      key={value}
+                      className={`flex cursor-pointer gap-3 rounded-card border-[1.5px] p-4 ${number === value ? "border-olive bg-olive-tint" : "border-field bg-surface"}`}
+                    >
+                      <input type="radio" name="number" value={value} checked={number === value} onChange={() => setNumber(value)} className="mt-1 accent-olive" />
+                      <span className="flex flex-col">
+                        <span className="font-medium">{title}</span>
+                        <span className="text-[13px] text-muted">{sub}</span>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            )}
+
             <div className="flex max-w-[420px] flex-col gap-1.5">
               <label htmlFor="system" className={labelCls}>
                 Where do you take bookings today?
@@ -168,32 +193,9 @@ export function SignupForm({ bookingUrl }: { bookingUrl: string }) {
         {step === 1 && (
           <form onSubmit={submit} className="flex flex-col gap-8">
             <div>
-              <h1 className="mb-2 text-[clamp(2.5rem,4.4vw,3.75rem)] leading-none font-normal tracking-[-0.04em]">Your number and you</h1>
+              <h1 className="mb-2 text-[clamp(2.5rem,4.4vw,3.75rem)] leading-none font-normal tracking-[-0.04em]">Your details</h1>
               <p className="text-lg text-muted">Who should we ring to book your setup call?</p>
             </div>
-
-            <fieldset className="flex flex-col gap-2.5">
-              <legend className={`${labelCls} mb-2.5`}>Your salon’s phone number</legend>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-2">
-                {(
-                  [
-                    ["forward", "Keep my number", "Forward it to Kikai. Clients ring the number they know."],
-                    ["new", "Get a new number", "We’ll set up a local number for you."],
-                  ] as const
-                ).map(([value, title, sub]) => (
-                  <label
-                    key={value}
-                    className={`flex cursor-pointer gap-3 rounded-card border-[1.5px] p-4 ${number === value ? "border-olive bg-olive-tint" : "border-field bg-surface"}`}
-                  >
-                    <input type="radio" name="number" value={value} checked={number === value} onChange={() => setNumber(value)} className="mt-1 accent-olive" />
-                    <span className="flex flex-col">
-                      <span className="font-medium">{title}</span>
-                      <span className="text-[13px] text-muted">{sub}</span>
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </fieldset>
 
             <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-4">
               <div className="flex flex-col gap-1.5">
