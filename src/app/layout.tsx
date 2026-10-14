@@ -20,6 +20,8 @@ export const metadata: Metadata = {
     images: [{ url: "/images/hero-salon.jpg", width: 1024, height: 572, alt: "A stylist at work while Kikai answers the salon phone" }],
   },
   twitter: { card: "summary_large_image" },
+  // Google Search Console ownership check for kikaiagency.vercel.app. Keep it while the property exists.
+  verification: { google: "-AwdFHoTs2qxFAhyY5iRMWCjjB9z2XPm7KEgvbq5iwM" },
 };
 
 // Light for everyone by default; the theme toggle updates this when a visitor picks dark.
