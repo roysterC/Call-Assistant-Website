@@ -8,6 +8,7 @@ import { site } from "@/content/site";
 export const metadata: Metadata = {
   title: { absolute: "Get Kikai" },
   description: "Tell us about your salon and we’ll build your AI receptionist. Live in about a week.",
+  alternates: { canonical: "/start" },
 };
 
 export default function StartPage() {

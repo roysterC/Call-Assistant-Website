@@ -1,9 +1,12 @@
 "use client";
 
 import { List, X } from "@phosphor-icons/react/ssr";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { site } from "@/content/site";
+import { trades } from "@/content/trades";
+import { BusinessesMenu } from "./businesses-menu";
 import { ThemeSwitchRow, ThemeToggle } from "./theme-toggle";
 import { ButtonLink, Logo } from "./ui";
 
@@ -25,6 +28,7 @@ export function SiteHeader() {
       </Link>
 
       <nav aria-label="Main" className="hidden items-center gap-7 text-[15px] text-ink-soft lg:flex">
+        <BusinessesMenu />
         {links.map((l) => (
           <Link key={l.href} href={l.href} className="transition-colors hover:text-ink">
             {l.label}
@@ -62,6 +66,22 @@ export function SiteHeader() {
           aria-label="Main"
           className="absolute inset-x-4 top-full flex animate-swap flex-col rounded-card border border-line bg-surface p-2 shadow-float lg:hidden"
         >
+          <span className="px-4 pt-2.5 pb-1.5 text-sm text-muted">Businesses</span>
+          {trades.map((t) => (
+            <Link
+              key={t.slug}
+              href={`/for/${t.slug}`}
+              onClick={() => setOpen(false)}
+              className="mx-1 mb-1.5 flex items-center gap-3 rounded-part bg-olive-tint p-2"
+            >
+              <Image src={t.hero.image} alt="" sizes="48px" className="size-12 flex-none rounded-[10px] object-cover" />
+              <span className="flex flex-col">
+                <span className="text-[17px] font-medium">{t.label}</span>
+                <span className="text-[13px] text-muted">{t.blurb}</span>
+              </span>
+            </Link>
+          ))}
+          <div className="mb-1 border-t border-line" />
           {[...links, { href: site.loginUrl, label: "Log in" }].map((l) => (
             <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="rounded-part px-4 py-3 text-lg hover:bg-card">
               {l.label}
