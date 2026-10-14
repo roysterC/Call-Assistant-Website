@@ -44,7 +44,7 @@ function PhoneShot({ image, alt, priority = false }: { image: Service["hero"]["i
         alt={alt}
         priority={priority}
         sizes="300px"
-        className="w-[min(290px,72%)] rounded-t-[34px] border-8 border-b-0 border-[#1f2414] shadow-lift"
+        className="w-[min(290px,72%)] rounded-t-[34px] border-8 border-b-0 border-bezel shadow-lift"
       />
     </div>
   );
@@ -80,7 +80,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[serv
           <Container className="flex flex-col gap-10 pt-8">
             <div className="flex flex-col gap-6">
               <nav aria-label="Breadcrumb" className="flex animate-rise items-center gap-2.5 text-sm text-muted">
-                <span className="grid size-8 place-items-center rounded-[10px] bg-olive-tint text-olive-text">
+                <span className="grid size-8 place-items-center rounded-part bg-olive-tint text-olive-text">
                   <ServiceIcon name={service.icon} size={18} />
                 </span>
                 <span>
@@ -116,7 +116,8 @@ export default async function ServicePage({ params }: PageProps<"/services/[serv
                       alt={service.hero.alt}
                       priority
                       sizes="(min-width: 1024px) 64vw, 100vw"
-                      className="aspect-[16/10] w-full rounded-[14px] object-cover object-[0%_0%] shadow-lift"
+                      style={{ "--phone-crop": service.hero.phonePosition ?? "0% 0%" } as React.CSSProperties}
+                      className="aspect-square w-full rounded-part object-cover object-(--phone-crop) shadow-lift md:aspect-[16/10] md:object-[0%_0%]"
                     />
                   </div>
                 ) : (
@@ -133,15 +134,21 @@ export default async function ServicePage({ params }: PageProps<"/services/[serv
             <div className="grid grid-cols-1 gap-4 md:grid-cols-[7fr_5fr] md:grid-rows-2">
               <article className="flex flex-col overflow-hidden rounded-panel bg-card md:row-span-2">
                 <div className="relative min-h-[300px] flex-1 px-6 pt-6">
-                  <div className="relative size-full min-h-[280px] overflow-hidden rounded-t-[12px] bg-line">
-                    <Image
-                      src={feature.image}
-                      alt={feature.alt}
-                      sizes="(min-width: 768px) 55vw, 100vw"
-                      style={{ objectPosition: feature.position ?? "0% 0%" }}
-                      className="absolute inset-0 size-full object-cover"
-                    />
-                  </div>
+                  {feature.layout === "panel" ? (
+                    <div className="relative mx-auto h-full min-h-[560px] w-full max-w-[380px] overflow-hidden rounded-t-part shadow-lift">
+                      <Image src={feature.image} alt={feature.alt} sizes="380px" className="absolute inset-x-0 top-0 h-auto w-full" />
+                    </div>
+                  ) : (
+                    <div className="relative size-full min-h-[280px] overflow-hidden rounded-t-part bg-line">
+                      <Image
+                        src={feature.image}
+                        alt={feature.alt}
+                        sizes="(min-width: 768px) 55vw, 100vw"
+                        style={{ objectPosition: feature.position ?? "0% 0%" }}
+                        className="absolute inset-0 size-full object-cover"
+                      />
+                    </div>
+                  )}
                 </div>
                 <div className="flex flex-col gap-1.5 p-7">
                   <h3 className="text-[28px] tracking-[-0.02em]">{feature.title}</h3>

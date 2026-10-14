@@ -48,6 +48,9 @@
   /* Shown behind the hero photo while it loads. */
   --color-photo: #a39886;
 
+  /* The frame round phone screenshots. Keeps 3:1 against the tinted panel in both modes. */
+  --color-bezel: #1f2414;
+
   /* Form errors only. */
   --color-alert: #c2393c;
 
@@ -105,6 +108,7 @@
   --color-sage: #2c3520;
 
   --color-photo: #3a352c;
+  --color-bezel: #6d735f;
   --color-alert: #e8776f;
 
   --shadow-lift: 0 30px 60px -30px rgb(0 0 0 / 0.6);

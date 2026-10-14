@@ -73,7 +73,7 @@ export function SiteHeader() {
           <span className="px-4 pt-2.5 pb-1 text-sm text-muted">Services</span>
           {services.map((s) => (
             <Link key={s.slug} href={`/services/${s.slug}`} onClick={() => setOpen(false)} className="flex items-center gap-3 rounded-part px-2.5 py-2 hover:bg-card">
-              <span className="grid size-9 flex-none place-items-center rounded-[10px] bg-olive-tint text-olive-text">
+              <span className="grid size-9 flex-none place-items-center rounded-part bg-olive-tint text-olive-text">
                 <ServiceIcon name={s.icon} size={18} />
               </span>
               <span className="flex flex-col">
@@ -91,7 +91,7 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className="mx-1 mb-1.5 flex items-center gap-3 rounded-part bg-olive-tint p-2"
             >
-              <Image src={t.hero.image} alt="" sizes="48px" className="size-12 flex-none rounded-[10px] object-cover" />
+              <Image src={t.hero.image} alt="" sizes="48px" className="size-12 flex-none rounded-part object-cover" />
               <span className="flex flex-col">
                 <span className="text-[17px] font-medium">{t.label}</span>
                 <span className="text-[13px] text-muted">{t.blurb}</span>

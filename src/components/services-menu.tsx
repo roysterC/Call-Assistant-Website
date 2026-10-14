@@ -56,8 +56,8 @@ export function ServicesMenu() {
               );
             })}
           </ul>
-          <div aria-hidden="true" className="flex flex-col gap-3 rounded-[14px] bg-card p-3.5">
-            <div className="relative min-h-0 flex-1 overflow-hidden rounded-[10px] bg-line">
+          <div aria-hidden="true" className="flex flex-col gap-3 rounded-part bg-card p-3">
+            <div className="relative min-h-0 flex-1 overflow-hidden rounded-part bg-line">
               <Image
                 key={shown.slug}
                 src={shown.hero.image}
