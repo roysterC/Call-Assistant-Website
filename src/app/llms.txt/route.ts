@@ -1,4 +1,5 @@
 import { faqs, features, plan, site } from "@/content/site";
+import { services } from "@/content/services";
 import { switching, trades } from "@/content/trades";
 
 /**
@@ -21,6 +22,9 @@ export function GET() {
     "",
     "## Included in the plan",
     ...plan.map((p) => `- ${p}`),
+    "",
+    "## Services",
+    ...services.map((s) => `- [${s.name}](${site.url}/services/${s.slug}): ${s.value}`),
     "",
     "## Switching to Kikai",
     `${switching.body} Moved during setup: ${switching.moves.join(", ").toLowerCase()}.`,

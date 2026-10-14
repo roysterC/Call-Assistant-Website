@@ -5,14 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { site } from "@/content/site";
+import { services } from "@/content/services";
 import { trades } from "@/content/trades";
 import { BusinessesMenu } from "./businesses-menu";
+import { ServiceIcon } from "./service-icon";
+import { ServicesMenu } from "./services-menu";
 import { ThemeSwitchRow, ThemeToggle } from "./theme-toggle";
 import { ButtonLink, Logo } from "./ui";
 
 const links = [
-  { href: "/#how", label: "How it works" },
-  { href: "/#handles", label: "What it handles" },
   { href: "/#calls", label: "Hear it" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQs" },
@@ -28,7 +29,10 @@ export function SiteHeader() {
       </Link>
 
       <nav aria-label="Main" className="hidden items-center gap-7 text-[15px] text-ink-soft lg:flex">
-        <BusinessesMenu />
+        <span className="flex items-center gap-2.5">
+          <ServicesMenu />
+          <BusinessesMenu />
+        </span>
         {links.map((l) => (
           <Link key={l.href} href={l.href} className="transition-colors hover:text-ink">
             {l.label}
@@ -64,9 +68,22 @@ export function SiteHeader() {
         <nav
           id="mobile-menu"
           aria-label="Main"
-          className="absolute inset-x-4 top-full flex animate-swap flex-col rounded-card border border-line bg-surface p-2 shadow-float lg:hidden"
+          className="absolute inset-x-4 top-full flex max-h-[calc(100dvh-88px)] animate-swap flex-col overflow-y-auto overscroll-contain rounded-card border border-line bg-surface p-2 shadow-float lg:hidden"
         >
-          <span className="px-4 pt-2.5 pb-1.5 text-sm text-muted">Businesses</span>
+          <span className="px-4 pt-2.5 pb-1 text-sm text-muted">Services</span>
+          {services.map((s) => (
+            <Link key={s.slug} href={`/services/${s.slug}`} onClick={() => setOpen(false)} className="flex items-center gap-3 rounded-part px-2.5 py-2 hover:bg-card">
+              <span className="grid size-9 flex-none place-items-center rounded-[10px] bg-olive-tint text-olive-text">
+                <ServiceIcon name={s.icon} size={18} />
+              </span>
+              <span className="flex flex-col">
+                <span className="font-medium">{s.name}</span>
+                <span className="text-[13px] text-muted">{s.short}</span>
+              </span>
+            </Link>
+          ))}
+          <div className="my-1 border-t border-line" />
+          <span className="px-4 pt-1.5 pb-1.5 text-sm text-muted">Businesses</span>
           {trades.map((t) => (
             <Link
               key={t.slug}

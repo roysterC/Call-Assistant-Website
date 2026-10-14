@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/content/site";
+import { services } from "@/content/services";
 import { trades } from "@/content/trades";
 import { ThemeSegmented } from "./theme-toggle";
 import { Container, Logo } from "./ui";
@@ -13,6 +14,10 @@ const columns = [
       { href: "/#pricing", label: "Pricing" },
       { href: site.loginUrl, label: "Log in" },
     ],
+  },
+  {
+    heading: "Services",
+    links: services.map((s) => ({ href: `/services/${s.slug}`, label: s.name })),
   },
   {
     heading: "Businesses",
