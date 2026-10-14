@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
   // Google Search Console ownership check for kikaiagency.vercel.app. Keep it while the property exists.
-  verification: { google: "RDVY9PZdUfVCcapOkF-HEFJxkkPC0MgOgNlaoN-NOU4" },
+  verification: { google: "-AwdFHoTs2qxFAhyY5iRMWCjjB9z2XPm7KEgvbq5iwM" },
 };
 
 // Light for everyone by default; the theme toggle updates this when a visitor picks dark.
