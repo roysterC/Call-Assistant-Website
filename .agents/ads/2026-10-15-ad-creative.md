@@ -197,6 +197,12 @@ Grounding: Roy's own account (founder section of `product-marketing.md`).
 
 Shooting notes: phone upright at eye level, facing a window, one take per line. Burn captions into the middle of the frame (keep them inside the central 720x1200 area the apps don't cover). Under 35 seconds.
 
+**Filming kit (made 15 Oct):** app-screen section (9s: Call history with the Booked calls, the booking in Priya's diary, the confirmation text), end card (4s, plus a still), caption files for both openings, and a one-page filming script. Two openings to test:
+- **A, background first:** "I build automation for an investment bank. Now I'm building it for hair salons." (about 30s)
+- **B, the salon moment first:** "I watched my friend put the scissors down, mid-cut, to answer the salon phone." then "I build automation for an investment bank. I knew I could fix this." (about 27.5s)
+
+Hypothesis: B beats A on 3-second views per 1,000 impressions, posted a few days apart to the same followers. If A wins, lead future founder videos with the background.
+
 ## 4. What to test (hypotheses that can lose)
 
 While you post organically, compare like for like: same week, same time of day, similar captions.
