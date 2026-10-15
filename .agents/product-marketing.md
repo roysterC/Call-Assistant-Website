@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-**Document version:** v1
+**Document version:** v2
 **Last updated:** 2026-10-15
 
 Drafted from the website copy (`src/content/site.ts`, `trades.ts`, `services.ts`), the two READMEs, and decisions made in planning sessions. Anything marked **MISSING** is not known yet: never invent it in copy. Anything marked **(assumed)** is a reasonable guess to confirm on sales calls.
@@ -115,6 +115,13 @@ B2C-like single buyer, so one persona with a second influencer.
 **Terms we own:** "Your new front desk", "Every call answered, every booking in the diary", "Switching is the easy part", "Fewer empty chairs".
 **Never use (and why):** Invented numbers or reviews (none are real yet, and the site's rule is every claim is something Kikai does today); "free" for the 30-min call unless confirmed; "no setup fee" or "live in 48 hours" (out of date: there is a setup fee and go-live is about a week).
 
+## Founder
+**Who:** Roy, software engineer, based in Birmingham. Builds automation systems for front-office operations at an investment bank (AWS cloud and more). Don't name the bank.
+**Origin moment (his words):** "Saw a real problem in a friend's busy salon: had to pick up the phone whilst mid-cut."
+**Why it matters in copy:** The founder story is the strongest cold-audience angle we have (ad-creative: Founder Message, tier S). Lead with the salon moment; the engineering background is proof it's built to work every time, not the headline.
+**Approved lines:** "Hi, I'm Roy." · "Then I watched a friend in a busy salon put the scissors down, mid-cut, to answer the phone." · "So I built Kikai." · "Built in Birmingham for UK salons."
+**Still to get:** a photo of Roy, or a 30-second phone video.
+
 ## Proof Points
 **Metrics:** Product facts only: calls answered 24/7; about 1 week from first call to live; 5 channels in one inbox; 0 call recordings kept. Customer results **MISSING**.
 **Customers:** **MISSING** (`salonCount` is null).
@@ -148,4 +155,5 @@ Not running paid ads yet. Fill in before the first campaign.
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v2 (2026-10-15) — Added the Founder section (Roy, Birmingham, the mid-cut origin moment) for founder ads.
 - v1 (2026-10-15) — Initial context, auto-drafted from the website copy, READMEs and planning decisions.
