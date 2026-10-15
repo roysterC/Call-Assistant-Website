@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-**Document version:** v2
+**Document version:** v3
 **Last updated:** 2026-10-15
 
 Drafted from the website copy (`src/content/site.ts`, `trades.ts`, `services.ts`), the two READMEs, and decisions made in planning sessions. Anything marked **MISSING** is not known yet: never invent it in copy. Anything marked **(assumed)** is a reasonable guess to confirm on sales calls.
@@ -120,7 +120,8 @@ B2C-like single buyer, so one persona with a second influencer.
 **Origin moment (his words):** "Saw a real problem in a friend's busy salon: had to pick up the phone whilst mid-cut."
 **Why it matters in copy:** The founder story is the strongest cold-audience angle we have (ad-creative: Founder Message, tier S). Lead with the salon moment; the engineering background is proof it's built to work every time, not the headline.
 **Approved lines:** "Hi, I'm Roy." · "Then I watched a friend in a busy salon put the scissors down, mid-cut, to answer the phone." · "So I built Kikai." · "Built in Birmingham for UK salons."
-**Still to get:** a photo of Roy, or a 30-second phone video.
+**Format:** founder story as a 30-second talking-head video only. No static founder note cards (owner decision).
+**Still to get:** the video itself.
 
 ## Proof Points
 **Metrics:** Product facts only: calls answered 24/7; about 1 week from first call to live; 5 channels in one inbox; 0 call recordings kept. Customer results **MISSING**.
@@ -147,6 +148,7 @@ Not running paid ads yet. Fill in before the first campaign.
 *Decisions and tested lessons. Newest first. Keep it to about 20 active entries.*
 | Date | Learning | Evidence | Applies to | Status |
 |------|----------|----------|------------|--------|
+| 2026-10-15 | Tell the founder story on video (30s, Roy to camera), not as a static note card. | Owner reviewed the static founder ad and rejected it; liked the video script. | ad-creative, social | active |
 | 2026-10-15 | Hold the strong SEO and AI-search push until Kikai has its own domain. | Owner decision; Google shows "Vercel" as the site name on the vercel.app address. | seo-audit, ai-seo, schema | active |
 | 2026-10-14 | Logo is the navy K and KIKAI wordmark as supplied; the site stays olive. | Owner chose option A over a recoloured version. | All visual work | active |
 | 2026-10 | Client migration is promised as done for us during setup, not as a self-serve import. | Owner decision; no import tool exists yet. | copywriting, ad-creative, sales | active |
@@ -155,5 +157,6 @@ Not running paid ads yet. Fill in before the first campaign.
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v3 (2026-10-15) — Founder story is video only; logged the decision in Learnings after the static note ad was rejected.
 - v2 (2026-10-15) — Added the Founder section (Roy, Birmingham, the mid-cut origin moment) for founder ads.
 - v1 (2026-10-15) — Initial context, auto-drafted from the website copy, READMEs and planning decisions.

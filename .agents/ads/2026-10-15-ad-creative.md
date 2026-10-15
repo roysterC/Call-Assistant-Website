@@ -172,17 +172,9 @@ Five angles, each a different reason to click. Primary text shows about 125 char
 - **Headline:** Booked over WhatsApp at 8:30pm.
 - **Grounding:** the demo screenshot `inbox-phone.jpg`. It's demo data, so the caption should not present it as a real client.
 
-### Concept C: Founder message (tier S, cold reach) **made: `kikai-ad-6.png`**
+### Concept C: Founder message (tier S, cold reach) **video only**
+The static note version was made and rejected by Roy (15 Oct); keep the story for the video below.
 Grounding: Roy's own account (founder section of `product-marketing.md`).
-
-**Static note ad (1080x1350):**
-> Hi, I’m Roy.
-> I’m a software engineer. I build automation for front-office teams at an investment bank.
-> Then I watched a friend in a busy salon put the scissors down, mid-cut, to answer the phone.
-> So I built Kikai. It answers every call and books it into your diary, so you can keep cutting.
-> Roy, Founder of Kikai, Birmingham
-
-The "R" circle stands in for Roy's photo; swap it in when there is one.
 
 **Meta copy (lengths checked):**
 | Field | Copy | Chars |
