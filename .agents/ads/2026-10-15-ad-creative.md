@@ -15,7 +15,7 @@ Tier is the skill's reach ranking for static formats: S/A reach cold audiences, 
 | 4. Answers WhatsApp too | Feature spotlight (real screen) | B | Solution-aware | Clear. The phone text is small at feed size. | Fine for feed; for Stories, crop to the conversation. |
 | 5. Switching is the easy part | Competitor callout | B | Product-aware | Speaks to the biggest fear (losing client data). | Keep it organic or for retargeting. In paid ads, naming Fresha and others can draw review scrutiny; the variant without names is safer. |
 
-**The gap:** all five are B tier (now covered by the founder ad, concept C). The skill's most reliable format for reaching new people is **founder content**: the person behind Kikai, on camera or in a short note, saying why they built it. It needs your story, so it's in the questions at the end.
+**The gap:** all five are B tier. Founder content (tier S) is on hold by the owner's choice, so cold reach comes from the B-tier ads and direct outreach. The skill's most reliable format for reaching new people is **founder content**: the person behind Kikai, on camera or in a short note, saying why they built it. It needs your story, so it's in the questions at the end.
 
 ### Caption fixes (AI tells)
 - **Ad 1** had a sentence that kept going after its point ("…and books it, and a text confirmation goes out straight away"). Now: "Kikai answers in your salon’s name, finds a free slot and books it. The client gets a text confirmation straight away."
@@ -172,36 +172,8 @@ Five angles, each a different reason to click. Primary text shows about 125 char
 - **Headline:** Booked over WhatsApp at 8:30pm.
 - **Grounding:** the demo screenshot `inbox-phone.jpg`. It's demo data, so the caption should not present it as a real client.
 
-### Concept C: Founder message (tier S, cold reach) **video only**
-The static note version was made and rejected by Roy (15 Oct); keep the story for the video below.
-Grounding: Roy's own account (founder section of `product-marketing.md`).
-
-**Meta copy (lengths checked):**
-| Field | Copy | Chars |
-|---|---|---|
-| Primary text | I’m Roy, a software engineer in Birmingham. I built Kikai after watching a friend stop mid-cut to answer the salon phone. | 121 |
-| Primary text | A friend had to put the scissors down mid-cut to answer the phone. So I built a receptionist that answers it for you. | 117 |
-| Headline | Built in Birmingham for UK salons | 33 |
-| Headline | Keep cutting. Kikai answers. | 28 |
-| Headline | From bank automation to salons | 30 |
-| Description | Book a 30-min call with Roy | 27 |
-
-**30-second video (Reels, Stories, TikTok, 9:16), shot on a phone:**
-| Time | On screen | Roy says |
-|---|---|---|
-| 0 to 3s | Roy to camera. Caption: "From bank automation to salon phones" | "I build automation for an investment bank. Now I’m building it for hair salons." |
-| 3 to 10s | Roy to camera | "A friend runs a busy salon. I watched them put the scissors down, mid-cut, to answer the phone." |
-| 10 to 22s | Screen recording: a call arriving, then the booking in the diary, then the text sent | "So I built Kikai. It answers your salon phone day and night, books clients in with the right stylist and texts them to confirm." |
-| 22 to 27s | Roy to camera | "You keep your number, and you’re live in about a week." |
-| 27 to 30s | Logo end card | "I’m Roy, I’m in Birmingham. Book a 30-minute call and I’ll show you how it works." |
-
-Shooting notes: phone upright at eye level, facing a window, one take per line. Burn captions into the middle of the frame (keep them inside the central 720x1200 area the apps don't cover). Under 35 seconds.
-
-**Filming kit (made 15 Oct):** app-screen section (9s: Call history with the Booked calls, the booking in Priya's diary, the confirmation text), end card (4s, plus a still), caption files for both openings, and a one-page filming script. Two openings to test:
-- **A, background first:** "I build automation for an investment bank. Now I'm building it for hair salons." (about 30s)
-- **B, the salon moment first:** "I watched my friend put the scissors down, mid-cut, to answer the salon phone." then "I build automation for an investment bank. I knew I could fix this." (about 27.5s)
-
-Hypothesis: B beats A on 3-second views per 1,000 impressions, posted a few days apart to the same followers. If A wins, lead future founder videos with the background.
+### Concept C: Founder message (tier S): **on hold**
+The owner has decided against founder-led content for now. Materials are stored privately, outside this repo. Don't make founder ads unless the owner reopens it.
 
 ## 4. What to test (hypotheses that can lose)
 
@@ -214,7 +186,6 @@ While you post organically, compare like for like: same week, same time of day, 
 Log each result in the Learnings table of `.agents/product-marketing.md` so the next batch starts from it.
 
 ## 5. What would make the next batch stronger
-- **Your story** (for concept C).
 - **The first salons' words:** two or three quotes from early users, with permission, unlock the review and testimonial formats.
 - **Comments and DMs** on these posts: objections people raise become the next FAQ cards.
 - **Prices**, once set: owners always ask, and a clear price line usually lifts bookings.

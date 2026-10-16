@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-**Document version:** v3
+**Document version:** v4
 **Last updated:** 2026-10-15
 
 Drafted from the website copy (`src/content/site.ts`, `trades.ts`, `services.ts`), the two READMEs, and decisions made in planning sessions. Anything marked **MISSING** is not known yet: never invent it in copy. Anything marked **(assumed)** is a reasonable guess to confirm on sales calls.
@@ -116,12 +116,8 @@ B2C-like single buyer, so one persona with a second influencer.
 **Never use (and why):** Invented numbers or reviews (none are real yet, and the site's rule is every claim is something Kikai does today); "free" for the 30-min call unless confirmed; "no setup fee" or "live in 48 hours" (out of date: there is a setup fee and go-live is about a week).
 
 ## Founder
-**Who:** Roy, software engineer, based in Birmingham. Builds automation systems for front-office operations at an investment bank (AWS cloud and more). Don't name the bank.
-**Origin moment (his words):** "Saw a real problem in a friend's busy salon: had to pick up the phone whilst mid-cut."
-**Why it matters in copy:** The founder story is the strongest cold-audience angle we have (ad-creative: Founder Message, tier S). Lead with the salon moment; the engineering background is proof it's built to work every time, not the headline.
-**Approved lines:** "Hi, I'm Roy." · "Then I watched a friend in a busy salon put the scissors down, mid-cut, to answer the phone." · "So I built Kikai." · "Built in Birmingham for UK salons."
-**Format:** founder story as a 30-second talking-head video only. No static founder note cards (owner decision).
-**Still to get:** the video itself.
+**Kept private.** The founder must not be named or shown in any public marketing: no name, photo, voice, employer, industry or location. Founder-led formats (founder note, founder video) are on hold. Speak as "Kikai" or "we".
+A founder video kit exists and is stored privately, outside this repo. Revisit only if the owner says so.
 
 ## Proof Points
 **Metrics:** Product facts only: calls answered 24/7; about 1 week from first call to live; 5 channels in one inbox; 0 call recordings kept. Customer results **MISSING**.
@@ -148,7 +144,7 @@ Not running paid ads yet. Fill in before the first campaign.
 *Decisions and tested lessons. Newest first. Keep it to about 20 active entries.*
 | Date | Learning | Evidence | Applies to | Status |
 |------|----------|----------|------------|--------|
-| 2026-10-15 | Tell the founder story on video (30s, Roy to camera), not as a static note card. | Owner reviewed the static founder ad and rejected it; liked the video script. | ad-creative, social | active |
+| 2026-10-16 | No founder-led or personal content in public marketing. Brand voice only ("Kikai", "we"). | Owner decision. | All public copy, ads, social | active |
 | 2026-10-15 | Hold the strong SEO and AI-search push until Kikai has its own domain. | Owner decision; Google shows "Vercel" as the site name on the vercel.app address. | seo-audit, ai-seo, schema | active |
 | 2026-10-14 | Logo is the navy K and KIKAI wordmark as supplied; the site stays olive. | Owner chose option A over a recoloured version. | All visual work | active |
 | 2026-10 | Client migration is promised as done for us during setup, not as a self-serve import. | Owner decision; no import tool exists yet. | copywriting, ad-creative, sales | active |
@@ -157,6 +153,7 @@ Not running paid ads yet. Fill in before the first campaign.
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
-- v3 (2026-10-15) — Founder story is video only; logged the decision in Learnings after the static note ad was rejected.
-- v2 (2026-10-15) — Added the Founder section (Roy, Birmingham, the mid-cut origin moment) for founder ads.
+- v4 (2026-10-16) — Founder kept private: removed personal details, put founder-led content on hold. Earlier entries trimmed for the same reason.
+- v3 (2026-10-15) — Founder format decision (since superseded by v4).
+- v2 (2026-10-15) — Added a Founder section (details since removed).
 - v1 (2026-10-15) — Initial context, auto-drafted from the website copy, READMEs and planning decisions.
