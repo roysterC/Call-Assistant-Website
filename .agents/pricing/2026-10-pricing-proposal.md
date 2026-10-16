@@ -59,3 +59,39 @@ The skill's advice: pick a price you can learn from, then let buyers tell you.
 ## Still to decide
 - Your own figure, to compare against this one.
 - Whether setup is £199, or higher once you've timed a real client migration.
+
+---
+
+## Update, 16 October: margins at £149 and £249
+Your figure is a **£249 monthly retainer**. The model below (`.agents/pricing/margins.py`, rerun it with `python3 margins.py` when real numbers arrive) prices both.
+
+**What one call-minute costs** on the live stack (Twilio, own voice server, Deepgram, Claude Haiku 5.5, ElevenLabs): **about 3.2p.** Speech-to-text 0.6p, voice 1.4p, phone line about 1.1p, AI model 0.1p. The AI model is the smallest cost in the system.
+
+**What a month costs, per salon** (calls, texts, phone number, AI messaging replies, staff assistant, Direct Debit fee):
+
+| Salon | Call minutes | Cost | Margin at £149 | Margin at £249 |
+|---|---|---|---|---|
+| Small (2 chairs) | 190 | about £28 | 82% (£122) | 89% (£221) |
+| Typical (4 chairs) | 400 | about £54 | 64% (£96) | 78% (£195) |
+| Busy (8 chairs) | 800 | about £103 | 31% (£47) | 58% (£146) |
+
+Texts are the biggest cost: every appointment gets a reminder. For a typical salon, texts are about £36 of the £54. **Before the text fix**, the typical salon cost £78 and the busy salon £152, a loss at £149.
+
+**Shared running costs:** about £59 a month for the VPS, the website on Vercel Pro (the free Hobby plan doesn't allow commercial use), domain, email and provider plan minimums. One typical salon covers them at either price.
+
+| Typical salons | Profit at £149 | Profit at £249 |
+|---|---|---|
+| 1 | £37 (25%) | £136 (54%) |
+| 3 | £228 (51%) | £525 (70%) |
+| 10 | £896 (60%) | £1,886 (76%) |
+| 25 | £2,329 (63%) | £4,804 (77%) |
+
+**Not included:** your time on setup and support, insurance, accountancy, the ICO data protection fee, marketing spend, corporation tax, and VAT (prices are treated as before VAT). Usage is estimated, not measured: check against the admin Usage page and the Twilio bill after the pilot.
+
+### Revised recommendation
+Both prices are profitable. £249 roughly doubles profit per salon and leaves room for busy salons. The pricing skill's own rule is that starting higher is safer than raising later. So:
+- **List price £249 a month**, £199 setup.
+- **Founding salons:** pilot month at half price (£125), setup waived, then £249.
+- **Value line for £249:** it pays for itself with about six cut-and-blow-dries a month.
+- **Watch the first ten conversations.** If small one-to-two-chair salons balk at the price itself, add a smaller plan at £149 with lower allowances, rather than cutting the main price.
+- **Allowances at £249:** 800 call minutes and 1,000 texts, then 8p a minute and 6p a text.
