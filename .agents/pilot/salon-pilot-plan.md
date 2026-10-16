@@ -8,7 +8,7 @@ Nothing here names the founder or the pilot salon. The case study names the salo
 ## 1. Agree the basics first (week 0)
 Put these in a short email so nobody has to remember them:
 - **Length:** four weeks, with a check-in each week.
-- **Cost:** **MISSING.** Free, discounted, or normal price after the pilot? Decide before you ask.
+- **Cost:** discounted for the pilot, then normal price once it ends. The discount and the normal price are still **MISSING**.
 - **What it does and doesn't do:** answers and books calls, replies to messages, sends confirmations and reminders. It never transfers calls; it takes messages instead.
 - **Their data:** the salon's client list stays the salon's. If they stop, it's exported back to them and deleted.
 - **Permission:** say upfront that you'd like to ask, at the end, whether you can share results and a quote. They can say no.
@@ -60,5 +60,6 @@ Then write one line of result using real figures only. For example: "[N] calls a
 **Keep it honest:** one salon is a strong story but a weak statistic. Say "at one salon", never "salons see".
 
 ## Still to decide
-- Pilot price (above).
+- The normal price and the pilot discount.
+- Who the pilot salon is: none signed up yet, so recruit one (see `pilot/recruiting.md` once written).
 - Start date, and whether the before-numbers can be collected first.

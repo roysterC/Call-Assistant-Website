@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-**Document version:** v4
+**Document version:** v5
 **Last updated:** 2026-10-15
 
 Drafted from the website copy (`src/content/site.ts`, `trades.ts`, `services.ts`), the two READMEs, and decisions made in planning sessions. Anything marked **MISSING** is not known yet: never invent it in copy. Anything marked **(assumed)** is a reasonable guess to confirm on sales calls.
@@ -144,6 +144,7 @@ Not running paid ads yet. Fill in before the first campaign.
 *Decisions and tested lessons. Newest first. Keep it to about 20 active entries.*
 | Date | Learning | Evidence | Applies to | Status |
 |------|----------|----------|------------|--------|
+| 2026-10-16 | Pilot salons pay a discounted price for the pilot, then normal price. | Owner decision. | Pilot, offers, outreach | active |
 | 2026-10-16 | No founder-led or personal content in public marketing. Brand voice only ("Kikai", "we"). | Owner decision. | All public copy, ads, social | active |
 | 2026-10-15 | Hold the strong SEO and AI-search push until Kikai has its own domain. | Owner decision; Google shows "Vercel" as the site name on the vercel.app address. | seo-audit, ai-seo, schema | active |
 | 2026-10-14 | Logo is the navy K and KIKAI wordmark as supplied; the site stays olive. | Owner chose option A over a recoloured version. | All visual work | active |
@@ -153,6 +154,7 @@ Not running paid ads yet. Fill in before the first campaign.
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v5 (2026-10-16) — Logged the pilot pricing decision (discounted pilot, then normal price).
 - v4 (2026-10-16) — Founder kept private: removed personal details, put founder-led content on hold. Earlier entries trimmed for the same reason.
 - v3 (2026-10-15) — Founder format decision (since superseded by v4).
 - v2 (2026-10-15) — Added a Founder section (details since removed).
