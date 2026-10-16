@@ -5,9 +5,10 @@ Brand account only. No founder, no personal accounts, nobody's face: every post 
 
 ## Setup (once)
 - **Accounts:** an Instagram professional account and a Facebook Page, both called Kikai, registered to a Kikai email address. Facebook Pages are run from a personal profile behind the scenes, but the admin's name isn't shown on the Page by default. Check Page transparency settings before posting.
-- **Name field:** Kikai | AI receptionist for salons
-- **Bio:** The AI receptionist for UK salons. Answers every call, books your diary, replies on WhatsApp and Instagram. Book a 30-min call:
-- **Link:** the booking page (`/start` on the website; switch to the new domain when it's live).
+- **Name field:** Kikai | AI Receptionist for Salons (searchable, so the keywords go here)
+- **Bio (129 of 150 characters):** Your salon’s new front desk. Every call answered, every booking in the diary, day and night. Keep your number. Book a call below.
+- **Links (Instagram allows up to five):** "Book a 30-min call" to the Google Calendar booking page the website uses (https://calendar.app.google/1rE44TA2Wk3Xp1EaA), then "Website" to https://kikaiagency.vercel.app. Switch the website link to the new domain when it's live.
+- **Facebook Page:** the same bio; the website in the website field; a "Book now" button pointing at the booking page.
 - **Profile picture:** the K mark from `src/app/icon.svg`, navy tile.
 
 ## Content pillars
