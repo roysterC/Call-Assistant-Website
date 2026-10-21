@@ -11,6 +11,7 @@ import { StickyCta } from "@/components/sticky-cta";
 import { TradeCalls } from "@/components/trade-calls";
 import { ButtonLink, Container, SectionHeading } from "@/components/ui";
 import { site } from "@/content/site";
+import { baseOpenGraph } from "@/lib/open-graph";
 import { switching, tradeBySlug, trades, type Trade } from "@/content/trades";
 
 // Only the trades in trades.ts exist; any other /for/... is a 404.
@@ -29,8 +30,7 @@ export async function generateMetadata({ params }: PageProps<"/for/[trade]">): P
     title: trade.title,
     description: trade.description,
     alternates: { canonical: url },
-    // A page-level openGraph replaces the layout's, so it carries the basics again.
-    openGraph: { type: "website", siteName: "Kikai", locale: "en_GB", title: `${trade.title} | Kikai`, description: trade.description, url, images: [image] },
+    openGraph: { ...baseOpenGraph, title: `${trade.title} | Kikai`, description: trade.description, url, images: [image] },
   };
 }
 
@@ -52,7 +52,15 @@ export default async function TradePage({ params }: PageProps<"/for/[trade]">) {
   const ld = {
     "@context": "https://schema.org",
     "@graph": [
-      { ...productLd, audience: { "@type": "BusinessAudience", audienceType: trade.label } },
+      // Its own @id and url: the home page's #product node describes the product at the site root.
+      {
+        ...productLd,
+        "@id": `${url}#product`,
+        name: `Kikai ${trade.title}`,
+        description: trade.description,
+        url,
+        audience: { "@type": "BusinessAudience", audienceType: trade.label },
+      },
       { ...faqLd(faqs), "@id": `${url}#faq` },
       {
         "@type": "BreadcrumbList",

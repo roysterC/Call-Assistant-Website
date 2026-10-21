@@ -7,6 +7,12 @@
  * README.md lists what is still missing before launch.
  */
 
+// The canonical URL goes into every canonical, the sitemap and the structured
+// data, so a production build without it fails rather than ship the placeholder.
+if (!process.env.NEXT_PUBLIC_SITE_URL && process.env.VERCEL_ENV === "production") {
+  throw new Error("NEXT_PUBLIC_SITE_URL must be set for production builds.");
+}
+
 export const site = {
   name: "Kikai",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://kikai.example",

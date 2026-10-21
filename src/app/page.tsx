@@ -8,8 +8,12 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyCta } from "@/components/sticky-cta";
 import { site } from "@/content/site";
+import { baseOpenGraph, defaultOgImage } from "@/lib/open-graph";
 
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { ...baseOpenGraph, url: "/", images: [defaultOgImage] },
+};
 
 const ld = {
   "@context": "https://schema.org",
