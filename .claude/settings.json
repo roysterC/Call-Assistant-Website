@@ -6,10 +6,18 @@
         "repo": "pbakaus/impeccable",
         "ref": "cli-v4.5.2"
       }
+    },
+    "agricidaniel-claude-seo": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-seo",
+        "ref": "v2.4.2"
+      }
     }
   },
   "enabledPlugins": {
-    "impeccable@impeccable": true
+    "impeccable@impeccable": true,
+    "claude-seo@agricidaniel-claude-seo": true
   },
   "env": {
     "IMPECCABLE_NO_TELEMETRY": "1"
