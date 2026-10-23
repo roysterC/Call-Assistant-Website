@@ -67,9 +67,8 @@ export function FeatureSwitcher() {
             key={active}
             src={screen.src}
             alt={screen.alt}
-            placeholder="blur"
             sizes="320px"
-            className={`aspect-[9/16] w-full max-w-[320px] animate-swap rounded-panel border border-line object-cover shadow-lift ${screen.focus}`}
+            className={`aspect-[9/16] w-full max-w-[320px] animate-swap rounded-panel border border-line bg-card object-cover shadow-lift ${screen.focus}`}
           />
         </div>
       </Container>

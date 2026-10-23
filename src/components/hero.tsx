@@ -46,6 +46,8 @@ export function Hero() {
             alt="A stylist blow-drying a client’s hair in a bright salon while a phone lies on the reception counter"
             fill
             priority
+            // The site's only blur placeholder: this is the photo people watch load. The blur is
+            // an SVG filter that's slow to draw, so other images show their frame's colour instead.
             placeholder="blur"
             sizes="(min-width: 1440px) 1408px, 100vw"
             className="object-cover object-[68%_40%] sm:object-[60%_50%]"
