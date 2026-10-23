@@ -46,7 +46,8 @@ export function Hero() {
             alt="A stylist blow-drying a client’s hair in a bright salon while a phone lies on the reception counter"
             fill
             priority
-            placeholder="blur"
+            // No placeholder="blur" here or elsewhere: it's an SVG filter that's slow to draw and was
+            // most of the home page's Lighthouse blocking time. The frame's bg-photo shows instead.
             sizes="(min-width: 1440px) 1408px, 100vw"
             className="object-cover object-[68%_40%] sm:object-[60%_50%]"
           />

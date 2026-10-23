@@ -132,7 +132,6 @@ function Hero({ trade }: { trade: Trade }) {
             src={trade.hero.image}
             alt={trade.hero.alt}
             priority
-            placeholder="blur"
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="absolute inset-0 size-full object-cover object-[40%_40%]"
           />
@@ -156,7 +155,7 @@ function HandsBusy({ trade }: { trade: Trade }) {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-[7fr_5fr] md:grid-rows-2">
           <article className="flex flex-col overflow-hidden rounded-panel bg-card md:row-span-2">
             <div className="relative min-h-[300px] flex-1 bg-photo">
-              <Image src={trade.busy.image} alt={trade.busy.alt} placeholder="blur" sizes="(min-width: 768px) 58vw, 100vw" className="absolute inset-0 size-full object-cover" />
+              <Image src={trade.busy.image} alt={trade.busy.alt} sizes="(min-width: 768px) 58vw, 100vw" className="absolute inset-0 size-full object-cover" />
             </div>
             <div className="flex flex-col gap-1.5 p-7">
               <h3 className="text-[28px] tracking-[-0.02em]">{main.title}</h3>

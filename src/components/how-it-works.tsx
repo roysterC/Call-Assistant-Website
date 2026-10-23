@@ -66,7 +66,6 @@ export function DeskAndPocket() {
             <Image
               src={diaryDesktop}
               alt="The Kikai diary on a desktop: a Friday with four stylists side by side and their appointments in colour by service"
-              placeholder="blur"
               sizes="(min-width: 1024px) 62vw, 100vw"
               className="aspect-[16/10] w-full border-b border-line object-cover object-left-top"
             />
@@ -79,7 +78,6 @@ export function DeskAndPocket() {
             <Image
               src={assistantPhone}
               alt="Kikai on a phone: the diary with the assistant open, ready to be asked about the day or told to book"
-              placeholder="blur"
               sizes="(min-width: 1024px) 34vw, 100vw"
               className="aspect-[4/5] w-full border-b border-line object-cover object-bottom lg:aspect-[13/15]"
             />
