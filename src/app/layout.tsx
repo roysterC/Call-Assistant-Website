@@ -1,10 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
 import { ChatWidget } from "@/components/chat-widget";
+import { baseOpenGraph, defaultOgImage } from "@/lib/open-graph";
 import { PAPER, THEME_SCRIPT } from "@/lib/theme";
 import { site } from "@/content/site";
 import "./globals.css";
+
+// geist/font/mono's settings, but not preloaded: it's only used for small
+// labels, and a preload would compete with the hero image on every page.
+const GeistMono = localFont({
+  src: "../../node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2",
+  variable: "--font-geist-mono",
+  preload: false,
+  adjustFontFallback: false,
+  fallback: ["ui-monospace", "SFMono-Regular", "Roboto Mono", "Menlo", "Monaco", "Liberation Mono", "DejaVu Sans Mono", "Courier New", "monospace"],
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -13,12 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Kikai",
   },
   description: site.description,
-  openGraph: {
-    type: "website",
-    siteName: "Kikai",
-    locale: "en_GB",
-    images: [{ url: "/images/hero-salon.jpg", width: 1024, height: 572, alt: "A stylist at work while Kikai answers the salon phone" }],
-  },
+  openGraph: { ...baseOpenGraph, images: [defaultOgImage] },
   twitter: { card: "summary_large_image" },
   // Google Search Console ownership check for kikaiagency.vercel.app. Keep it while the property exists.
   verification: { google: "-AwdFHoTs2qxFAhyY5iRMWCjjB9z2XPm7KEgvbq5iwM" },

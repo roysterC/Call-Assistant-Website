@@ -12,6 +12,7 @@ import { StickyCta } from "@/components/sticky-cta";
 import { ButtonLink, Container, SectionHeading } from "@/components/ui";
 import { serviceBySlug, services, type Service } from "@/content/services";
 import { site } from "@/content/site";
+import { baseOpenGraph } from "@/lib/open-graph";
 
 // Only the services in services.ts exist; any other /services/... is a 404.
 export const dynamicParams = false;
@@ -26,12 +27,11 @@ export async function generateMetadata({ params }: PageProps<"/services/[service
   const url = `/services/${service.slug}`;
   const { image: shot, alt } = service.hero;
   const image = { url: shot.src, width: shot.width, height: shot.height, alt };
-  // A page-level openGraph replaces the layout's, so it carries the basics again.
   return {
     title: service.title,
     description: service.description,
     alternates: { canonical: url },
-    openGraph: { type: "website", siteName: "Kikai", locale: "en_GB", title: `${service.title} | Kikai`, description: service.description, url, images: [image] },
+    openGraph: { ...baseOpenGraph, title: `${service.title} | Kikai`, description: service.description, url, images: [image] },
   };
 }
 
@@ -58,7 +58,15 @@ export default async function ServicePage({ params }: PageProps<"/services/[serv
   const ld = {
     "@context": "https://schema.org",
     "@graph": [
-      { ...productLd, "@id": `${url}#product`, name: `Kikai ${service.name}`, description: service.description, url },
+      {
+        ...productLd,
+        "@id": `${url}#product`,
+        name: `Kikai ${service.name}`,
+        description: service.description,
+        url,
+        // This service's own features, as the page lists them, not the receptionist's.
+        featureList: [service.values.feature.title, ...service.values.others.map((o) => o.title), ...service.details.items.map((d) => d.lead.replace(/\.$/, ""))],
+      },
       { ...faqLd(service.faqs), "@id": `${url}#faq` },
       {
         "@type": "BreadcrumbList",

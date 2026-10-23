@@ -1,0 +1,9 @@
+# Runtime state written by `claude-seo setup` (venv, Playwright Chromium, lock/state files)
+.venv/
+.venv.next-*/
+.venv.previous/
+ms-playwright/
+runtime-state.json
+.runtime-state.next
+.setup.lock
+__pycache__/

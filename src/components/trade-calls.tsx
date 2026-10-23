@@ -20,7 +20,6 @@ export function TradeCalls({ calls }: { calls: Call[] }) {
   const [active, setActive] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const id = useId();
-  const call = calls[active];
 
   function onKey(e: KeyboardEvent, i: number) {
     const last = calls.length - 1;
@@ -47,7 +46,7 @@ export function TradeCalls({ calls }: { calls: Call[] }) {
               role="tab"
               id={`${id}-tab-${i}`}
               aria-selected={selected}
-              aria-controls={`${id}-panel`}
+              aria-controls={`${id}-panel-${i}`}
               tabIndex={selected ? 0 : -1}
               onClick={() => setActive(i)}
               onKeyDown={(e) => onKey(e, i)}
@@ -61,20 +60,25 @@ export function TradeCalls({ calls }: { calls: Call[] }) {
           );
         })}
       </div>
-      <div
-        role="tabpanel"
-        id={`${id}-panel`}
-        aria-labelledby={`${id}-tab-${active}`}
-        className="flex min-h-[380px] flex-col gap-5 rounded-panel bg-card p-[clamp(28px,4vw,48px)]"
-      >
-        <div key={active} className="flex flex-1 animate-swap flex-col gap-5">
-          <span className="text-sm text-muted">The caller asks</span>
-          <p className="text-[clamp(1.625rem,2.6vw,2.25rem)] leading-[1.15] tracking-[-0.025em]">“{call.question}”</p>
-          <span className="mt-2 text-sm text-muted">Kikai</span>
-          <p className="max-w-[46ch] text-lg text-ink-soft">{call.answer}</p>
-          <span className={`mt-auto self-start rounded-full px-3.5 py-1.5 text-sm font-medium ${outcomeStyle[call.outcome]}`}>{call.outcome}</span>
+      {/* One panel per call, all in the HTML so crawlers read every answer; only the active one shows. */}
+      {calls.map((c, i) => (
+        <div
+          key={c.question}
+          role="tabpanel"
+          id={`${id}-panel-${i}`}
+          aria-labelledby={`${id}-tab-${i}`}
+          hidden={i !== active}
+          className="flex min-h-[380px] flex-col gap-5 rounded-panel bg-card p-[clamp(28px,4vw,48px)]"
+        >
+          <div className="flex flex-1 animate-swap flex-col gap-5">
+            <span className="text-sm text-muted">The caller asks</span>
+            <p className="text-[clamp(1.625rem,2.6vw,2.25rem)] leading-[1.15] tracking-[-0.025em]">“{c.question}”</p>
+            <span className="mt-2 text-sm text-muted">Kikai</span>
+            <p className="max-w-[46ch] text-lg text-ink-soft">{c.answer}</p>
+            <span className={`mt-auto self-start rounded-full px-3.5 py-1.5 text-sm font-medium ${outcomeStyle[c.outcome]}`}>{c.outcome}</span>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 }

@@ -4,11 +4,13 @@ import { SignupForm } from "@/components/signup-form";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Logo } from "@/components/ui";
 import { site } from "@/content/site";
+import { baseOpenGraph, defaultOgImage } from "@/lib/open-graph";
 
 export const metadata: Metadata = {
   title: { absolute: "Get Kikai" },
   description: "Tell us about your salon and we’ll build your AI receptionist. Live in about a week.",
   alternates: { canonical: "/start" },
+  openGraph: { ...baseOpenGraph, url: "/start", images: [defaultOgImage] },
 };
 
 export default function StartPage() {

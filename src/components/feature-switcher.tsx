@@ -53,7 +53,10 @@ export function FeatureSwitcher() {
                 className={`flex flex-col gap-1.5 border-t py-5 text-left transition-colors ${on ? "border-olive text-ink" : "border-line text-muted hover:text-ink-soft"}`}
               >
                 <span className="text-[26px] leading-[1.15] tracking-[-0.03em]">{f.title}</span>
-                {on && <span className="max-w-[46ch] animate-swap text-muted">{f.body}</span>}
+                {/* Every body stays in the HTML, so crawlers read all four; only the active one shows. */}
+                <span hidden={!on} className="max-w-[46ch] animate-swap text-muted">
+                  {f.body}
+                </span>
               </button>
             );
           })}
