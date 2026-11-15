@@ -18,8 +18,8 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://kikai.example",
   description:
     "An AI receptionist for UK salons. Answers every call, books into your diary and replies on WhatsApp, Instagram, Facebook and your website.",
-  // The CRM serves the login page and the legal pages Meta's review already points at.
-  loginUrl: "https://89-58-45-110.nip.io/login",
+  // The CRM serves the login page, and the legal pages Meta's review already points at.
+  loginUrl: "https://app.getkikai.com/login",
   privacyUrl: "https://89-58-45-110.nip.io/privacy-policy",
   termsUrl: "https://89-58-45-110.nip.io/terms-of-service",
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL || "/start",
